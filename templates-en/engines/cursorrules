@@ -1,0 +1,7 @@
+# Reversa — Reverse Engineering Framework
+
+When the user types "/reversa" or "reversa" alone in a message:
+1. Activate the "reversa" skill in .agents/skills/reversa/SKILL.md
+2. Read the SKILL.md in full and follow Reversa's instructions exactly
+
+{{REVERSA_POLICY}}

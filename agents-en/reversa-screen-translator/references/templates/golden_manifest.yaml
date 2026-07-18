@@ -1,0 +1,62 @@
+# golden/manifest.yaml
+#
+# Manifest of golden files emitted by the Screen Translator. The Inspector consumes
+# this file to build constructive parity tests when the legacy oracle is available
+# and the capture was possible.
+#
+# In v1, automated capture via Docker/Wine/emulator is OQ-02 (not implemented).
+# This manifest describes the suggested command per screen; user runs manually.
+# In projects without executable oracle, this file can exist empty (list of
+# golden files with `present: false`) or not exist, and the Inspector ignores it.
+
+schemaVersion: 1
+generatedAt: <ISO-8601>
+reversa:
+  version: "x.y.z"
+producedBy: screen-translator
+sourcePlatform: <slug>
+targetPlatform: <slug>
+oracleAvailable: true | false
+oracleHash: "sha256:<hash of the oracle binary or container, when applicable>"
+oracleCommand: "<base command to invoke the oracle, e.g.: 'docker run --rm -i legacy-atm:1.0'>"
+
+normalizationRules:
+  # Rules accepted in byte-by-byte comparison. Everything outside here is real divergence.
+  - lineEndings: "\n"           # convert CRLF → LF before comparing
+  - trimTrailingSpaces: false   # default: never trim
+  - stripAnsiColors: false      # default: never strip; ANSI is part of the contract
+  - normalizeUtf8: true         # convert heterogeneous encoding to UTF-8
+  - injectClock: "2026-01-01T00:00:00Z"  # fake clock for deterministic capture
+  - seedRandom: 42              # fixed seed
+
+screens:
+  - name: <canonical-screen-name>
+    legacyOrigin: "<file:line>"
+    capture:
+      command: "<complete capture command, e.g.: 'echo -e \"1\\n123456\\n0\\n\" | docker run --rm -i legacy-atm:1.0 > screen_login.txt'>"
+      expectedExitCode: 0
+      determinismStrategy: "fake-clock + fixed-seed"
+    file: "screen-login.txt"          # path relative to _reversa_sdd/screens/golden/
+    format: "ansi-byte-stream"      # ansi-byte-stream | png | html-css-snapshot | raw
+    present: true                   # false when the user has not run the capture yet
+    captureBy: "<user-name-or-CI>"
+    capturedAt: "<ISO-8601>"
+    sha256: "<hash of the captured file, or null when present=false>"
+    deviations: [DEV-XXX, DEV-YYY]  # list of known deviations for this screen
+    notes: "<specific observations, e.g.: 'oracle emits trailing space that we ignore via trimTrailingSpaces in the comparison'>"
+
+  - name: <second-screen>
+    # ...
+
+# Screens for which deterministic capture was not possible.
+nonDeterministic:
+  - name: <screen-with-external-clock>
+    reason: "<description of the non-determinism source>"
+    fallback: "sampling by N executions; golden file = common to all"
+    samples: 5
+    deviations: [DEV-021]
+
+# Screens in projects without UI or in skipped mode.
+skipped:
+  reason: "<e.g.: legacy is pure batch, Screen Translator agent skipped>"
+  emittedAt: <ISO-8601>

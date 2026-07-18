@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewer Demo | Legendary Payments System</title>
+
+    <meta name="reversa-category" content="review">
+    <meta name="reversa-template" content="annotated-pr">
+    <meta name="reversa-source-md" content="audit.md">
+    <meta name="reversa-producer-agent" content="reversa-security-auditor">
+    <meta name="reversa-generated-at" content="2026-05-16T15:00:00Z">
+    <meta name="reversa-schema-version" content="1">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-style="sober" data-page="demo">
+
+    <header class="reversa-doc-header">
+        <a class="reversa-doc-logo" href="#" aria-label="Home">
+            <span class="seal" aria-hidden="true">
+                <svg viewBox="0 0 32 32" width="32" height="32">
+                    <circle cx="16" cy="16" r="14" fill="currentColor" opacity="0.15"/>
+                    <circle cx="16" cy="16" r="7" fill="currentColor"/>
+                    <circle cx="22" cy="10" r="3" fill="currentColor" opacity="0.6"/>
+                </svg>
+            </span>
+            <span class="project-name">Legendary Payments System</span>
+        </a>
+        <nav class="reversa-doc-nav" aria-label="Documentation sections">
+            <a href="#" class="is-active">Overview</a>
+            <a href="#">Architecture</a>
+            <a href="#">Modules</a>
+            <a href="#">Metrics</a>
+            <a href="#">Timeline</a>
+            <a href="#">Glossary</a>
+        </nav>
+        <div class="reversa-doc-toolbar">
+            <button type="button" class="theme-toggle" aria-label="Toggle visual theme">
+                <span class="theme-toggle-label">Sober</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="reversa-doc-main" role="main">
+        <div class="reversa-doc-payload">
+            <h1 class="reversa-doc-title">Visual Chassis Demonstration</h1>
+
+            <p>
+                This page exists to visually validate the four style variants
+                of Reversa's shared chassis. Use the button in the top-right
+                corner to toggle between <code>sober</code>,
+                <code>premium</code>, <code>dense</code> and <code>exploratory</code>.
+                The choice persists in <code>localStorage</code>.
+            </p>
+
+            <section>
+                <h2>Cards and responsive grid</h2>
+                <div class="reversa-grid">
+                    <div class="reversa-card">
+                        <h3>Code City</h3>
+                        <p>3D visualization with each file as a building. Height by LOC, width by complexity.</p>
+                        <span class="reversa-pill is-info">3D</span>
+                    </div>
+                    <div class="reversa-card">
+                        <h3>Module Map</h3>
+                        <p>Repulsive force between nodes, attractive force between dependents. Automatic cycle detection.</p>
+                        <span class="reversa-pill is-info">D3</span>
+                    </div>
+                    <div class="reversa-card">
+                        <h3>Metrics</h3>
+                        <p>Size treemap per folder, top 20 most complex, LOC distribution.</p>
+                        <span class="reversa-pill is-info">Highcharts</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Sample findings (Annotated PR)</h2>
+                <div class="reversa-card">
+                    <h3>SQL injection in /api/orders endpoint</h3>
+                    <p>
+                        <span class="reversa-pill is-critical">CRITICAL</span>
+                        <span class="reversa-pill">src/api/orders.ts:47</span>
+                        <span class="reversa-pill">OWASP A03:2021</span>
+                    </p>
+                    <pre><code>query = `SELECT * FROM orders WHERE id = ${userId}`</code></pre>
+                    <p>
+                        Direct concatenation of <code>userId</code> into SQL allows
+                        injection. Use parameterized queries with prepared statements.
+                    </p>
+                </div>
+                <div class="reversa-card">
+                    <h3>Session cookie without HttpOnly flag</h3>
+                    <p>
+                        <span class="reversa-pill is-high">HIGH</span>
+                        <span class="reversa-pill">src/auth/session.ts:23</span>
+                    </p>
+                    <p>
+                        Session cookies must use the <code>HttpOnly</code>,
+                        <code>Secure</code> and <code>SameSite=Lax</code> flags.
+                    </p>
+                </div>
+                <div class="reversa-card">
+                    <h3>Partial input validation on /signup</h3>
+                    <p>
+                        <span class="reversa-pill is-medium">MEDIUM</span>
+                        <span class="reversa-pill">src/api/signup.ts:12</span>
+                    </p>
+                    <p>
+                        Email has a regex, password does not. Add validation for
+                        minimum length and complexity.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Typography and inline code</h2>
+                <p>
+                    The page title uses <code>--reversa-font-heading</code>,
+                    while the body uses <code>--reversa-font-body</code>. In the
+                    <code>premium</code> variant the body switches to Lora serif;
+                    in the others it is Inter.
+                </p>
+                <pre><code>function colorForModule(module) {
+    if (module.isHotPath) return 0xff5a4f;
+    return TYPE_COLORS[module.type] || 0xcccccc;
+}</code></pre>
+            </section>
+        </div>
+    </main>
+
+    <aside class="reversa-doc-sidebar" aria-label="Controls" data-page="demo">
+        <h3>Sample controls</h3>
+
+        <label>
+            Depth
+            <input type="range" min="1" max="10" value="5" step="1"
+                   data-param="depth" data-default="5">
+        </label>
+
+        <label>
+            Hot path threshold
+            <input type="range" min="0" max="100" value="50" step="5"
+                   data-param="hotThreshold" data-default="50">
+        </label>
+
+        <label>
+            <input type="checkbox" data-param="showLabels" data-default="true" checked>
+            Visible labels
+        </label>
+
+        <label>
+            <input type="checkbox" data-param="highlightCycles" data-default="false">
+            Highlight cycles
+        </label>
+
+        <label>
+            Filter folder
+            <select data-param="folder" data-default="all">
+                <option value="all">All</option>
+                <option value="src/auth">src/auth</option>
+                <option value="src/api">src/api</option>
+                <option value="src/db">src/db</option>
+            </select>
+        </label>
+
+        <div style="margin-top: 24px; display: flex; gap: 8px;">
+            <button type="button" data-action="reset" id="reset">Reset</button>
+            <button type="button" data-action="export-png" id="export-png">Export PNG</button>
+        </div>
+
+        <div style="margin-top: 24px; font-size: 12px; opacity: 0.7;">
+            <p>
+                Changes in the controls fire the
+                <code>reversa:param-change</code> event and persist in
+                <code>localStorage</code>.
+            </p>
+        </div>
+    </aside>
+
+    <footer class="reversa-doc-footer">
+        <span class="reversa-doc-footer-text">
+            Generated by Reversa on
+            <time datetime="2026-05-16T15:00:00Z">May 16, 2026, 15:00</time>
+        </span>
+        <span class="reversa-doc-footer-sep" aria-hidden="true">·</span>
+        <a href="#" class="reversa-doc-source-link">Markdown source</a>
+    </footer>
+
+    <script src="../assets/js/nav.js"></script>
+    <script src="../assets/js/sidebar.js"></script>
+    <script>
+        // Demo of the custom event capture
+        document.addEventListener("reversa:param-change", (e) => {
+            console.log("[demo] parameter changed:", e.detail);
+        });
+    </script>
+</body>
+</html>
