@@ -1,6 +1,6 @@
 ---
 name: reversa-coding
-description: Drives the execution of actions.md into code. Updates checkboxes to [X], writes progress.jsonl, generates legacy-impact.md and regression-watch.md. Use when the user types "/reversa-coding", "reversa-coding", "executar plano" or asks to start coding the active feature. Last skill of the forward cycle, after `/reversa-to-do` (and optionally `/reversa-audit` or `/reversa-quality`).
+description: "Drives the execution of actions.md into code. Updates checkboxes to [X], writes progress.jsonl, generates legacy-impact.md and regression-watch.md. Works anchored in the legacy (Discovery extraction in `_reversa_sdd/`) or in greenfield (prd.md + SDD specs from `/reversa-new`). Use when the user types \"/reversa-coding\", \"reversa-coding\", \"execute plan\" or asks to start coding the active feature. Last skill of the forward cycle, after `/reversa-to-do` (and optionally `/reversa-audit` or `/reversa-quality`)."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:
@@ -18,38 +18,36 @@ You are the executor. Your mission is to transform `actions.md` into real code, 
 1. Read `.reversa/state.json` to resolve `output_folder` and `forward_folder`
 2. Use the real values in places where the text mentions `_reversa_sdd/` or `_reversa_forward/`
 
-## Non-negotiable prerequisite: reverse extraction
+## Context anchor: legacy or greenfield
 
-This skill **REQUIRES** that the reverse pipeline has been executed before at least once. Without `_reversa_sdd/`, the two central artifacts of the skill (`legacy-impact.md` and `regression-watch.md`) lose their anchor and become worthless; the forward cycle becomes a generic framework. Reversa only makes sense with the legacy-code bridge alive.
+This skill **REQUIRES** a context anchor in `_reversa_sdd/`, otherwise the two central artifacts (`legacy-impact.md` and `regression-watch.md`) lose their value and the forward cycle becomes a generic framework. Two anchors are valid:
 
-The check is strict: `_reversa_sdd/` must exist as a directory AND contain at least `architecture.md` AND `domain.md`. If any condition fails, the skill aborts with a clear message, does NOT offer the option to proceed anyway, does NOT write anything to disk.
+1. **Legacy:** `_reversa_sdd/` contains `architecture.md` AND `domain.md` (extraction from the Discovery Team via `/reversa`). Classic behavior.
+2. **Greenfield:** `_reversa_sdd/` contains `prd.md` AND at least one spec in `_reversa_sdd/sdd/` (artifacts from `/reversa-new`). A new project is a valid case; the pipeline does not block on the absence of the extraction. The skill's artifacts adapt as described in the generation sections.
+
+If both anchors exist (a project that ran both `/reversa` and `/reversa-new`), use the legacy one as the main anchor and the SDD specs as a complement.
+
+The check remains strict when NO anchor exists: the skill aborts with a clear message, does NOT offer the option to proceed anyway, does NOT write anything to disk.
 
 ## Initial checks
 
 1. Read `.reversa/active-requirements.json`
-   1.1. If absent, abort with a message pointing to `/reversa-requirements`
+   1.1. If missing, abort with a message pointing to `/reversa-requirements`
 2. Verify the existence of `feature-dir/actions.md`
-   2.1. If absent, abort with a message pointing to `/reversa-to-do`
-3. Check the reverse extraction prerequisite:
-   3.1. If `_reversa_sdd/` does not exist as a directory, abort with the message:
+   2.1. If missing, abort with a message pointing to `/reversa-to-do`
+3. Verify the context anchor:
+   3.1. **Legacy anchor:** `_reversa_sdd/` exists AND contains `architecture.md` AND `domain.md`. If satisfied, internally record the scenario as **legacy** and proceed to step 4.
+   3.2. **Greenfield anchor:** `_reversa_sdd/` exists AND contains `prd.md` AND at least one `.md` file in `_reversa_sdd/sdd/`. If satisfied (and the legacy one is not), record the scenario as **greenfield**, inform the user ("No legacy extraction, I will anchor in the `/reversa-new` artifacts: `prd.md` and SDD specs.") and proceed to step 4.
+   3.3. If NONE of the two anchors is satisfied, abort with the message:
 
-       > 🛑 `/reversa-coding` requires the reverse pipeline executed before. The `_reversa_sdd/` folder was not found.
-       >
-       > Run `/reversa` to generate the legacy extraction and then come back here. Without that context, `legacy-impact.md` and `regression-watch.md` would lose their anchor and the forward cycle would lose its edge.
+      > 🛑 `/reversa-coding` requires a context anchor in `_reversa_sdd/` and I didn't find any:
+      >
+      > - **Legacy:** `architecture.md` + `domain.md` (generate with `/reversa`)
+      > - **Greenfield:** `prd.md` + specs in `sdd/` (generate with `/reversa-new`)
+      >
+      > Without that context, `legacy-impact.md` and `regression-watch.md` would lose their anchor and the forward cycle would lose its edge. Run one of the two pipelines and come back here.
 
-   3.2. If `_reversa_sdd/` exists but `architecture.md` is missing, abort with the message:
-
-       > 🛑 `/reversa-coding` requires `_reversa_sdd/architecture.md` (generated by the Architect in the reverse pipeline). The file is missing; the extraction may have been partial.
-       >
-       > Run `/reversa` in complete mode (minimum `essential`) and come back here.
-
-   3.3. If `_reversa_sdd/architecture.md` exists but `_reversa_sdd/domain.md` is missing, abort with the message:
-
-       > 🛑 `/reversa-coding` requires `_reversa_sdd/domain.md` (generated by the Detective in the reverse pipeline). The file is missing.
-       >
-       > Run `/reversa` to complete the extraction and come back here.
-
-   3.4. In all cases of step 3, do NOT create `legacy-impact.md`, do NOT create `regression-watch.md`, do NOT touch `actions.md`, do NOT write `progress.jsonl`. Only report and end.
+   3.4. In the case of step 3.3, do NOT create `legacy-impact.md`, do NOT create `regression-watch.md`, do NOT touch `actions.md`, do NOT write `progress.jsonl`. Only report and end.
 
 4. Apply `before-coding` in the default way
 
@@ -79,6 +77,10 @@ For each phase, in order Preparation, Tests, Core, Integration, Polish:
 
 After running (even partially):
 
+**Greenfield scenario:** there is no legacy to impact. Generate the file anyway, with adaptations: map each created file to the corresponding component in the specs under `_reversa_sdd/sdd/` (instead of `architecture.md`), use the impact type `new-component` for everything, and register in the header: "Greenfield feature, no pre-existing legacy. Anchor: prd.md + SDD specs." The "Preserved" and "Modified" sections stay empty with that note. Skip steps 4 and 5 below.
+
+**Legacy scenario:**
+
 1. For each project file touched, map to the corresponding component in `_reversa_sdd/architecture.md` when possible
 2. For each affected component, classify the impact type: `rule-changed`, `rule-removed`, `new-rule`, `new-component`, `extinct-component`, `data-delta`, `external-contract-delta`
 3. Assign severity aligned with `/reversa-audit` (CRITICAL, HIGH, MEDIUM, LOW)
@@ -96,6 +98,10 @@ File structure:
 Write to `feature-dir/legacy-impact.md` atomically, complete rewrite.
 
 ## Generating regression-watch.md
+
+**Greenfield scenario:** there are no 🟢 rules to watch (nothing was extracted from existing code yet). Generate the file with the standard structure, empty main watch, and record the implemented FRs (from the SDD specs) in the "Observations" section, without regression weight. They gain weight when a future `/reversa` extraction over the new code confirms them as 🟢. Skip steps 1 to 4 below (step 5, stable IDs, applies to the observations).
+
+**Legacy scenario:**
 
 1. For each rule in the "Modified" section of `legacy-impact.md`, generate a watch item
 2. For explicitly removed rules, generate a watch item of type `absence`
@@ -134,11 +140,11 @@ Apply `after-coding` in the default way.
 2. How many failed (if any)
 3. Absolute path of `actions.md`, `progress.jsonl`, `legacy-impact.md`, `regression-watch.md`
 4. How many watch items were created in this run
-5. Explicit warning: to close the cycle, run `/reversa` (reverse extraction) again at some future moment
+5. Explicit warning: run `/reversa-sync` to converge the delivery in `_reversa_sdd/addenda/` and keep on the radar to run `/reversa` (re-extraction) again at some future moment to close the cycle
 6. If the execution was partial, indicate the next phase or pending action
 
 NEVER trigger the re-extraction on your own; that is the user's decision.
 
 End with:
 
-> Type **CONTINUE** to proceed with `/reversa` (re-extraction) or any other action the user wants.
+> Type **CONTINUE** to proceed with `/reversa-sync` (delivery convergence in the extraction) or any other action the user wants.

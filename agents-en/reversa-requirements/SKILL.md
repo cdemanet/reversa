@@ -1,6 +1,6 @@
 ---
 name: reversa-requirements
-description: Transforms an idea in natural language into a complete requirements document, anchored in the reverse pipeline artifacts. Use when the user types "/reversa-requirements", "reversa-requirements", "quero levantar requisitos" or asks to start a new feature from a sentence. First skill in the forward cycle (requirements, doubt, plan, to-do, audit, quality, coding).
+description: Transforms an idea in natural language into a complete requirements document, anchored in the reverse pipeline artifacts. Use when the user types "/reversa-requirements", "reversa-requirements", "I want to gather requirements" or asks to start a new feature from a sentence. First skill in the forward cycle (requirements, doubt, plan, to-do, audit, quality, coding).
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:
@@ -162,7 +162,8 @@ Before writing requirements, read, in order (skipping what does not exist):
 2. `_reversa_sdd/domain.md` (confirmed business rules)
 3. `_reversa_sdd/inventory.md` (code surface)
 4. `_reversa_sdd/code-analysis.md` ONLY in the sections of components that the free argument seems to touch
-5. `.reversa/principles.md` (project principles, if it exists)
+5. `_reversa_sdd/addenda/*.md` (addenda of features already delivered by the forward cycle, created by `/reversa-sync`). Consider ONLY the in-force ones (Validity section without supersession line): they correct the reading of the artifacts above for deltas the extraction has not yet absorbed
+6. `.reversa/principles.md` (project principles, if it exists)
 
 Identify the relevant files. Each citation inside requirements must point to these sources in the format `_reversa_sdd/<file>#<section>`.
 

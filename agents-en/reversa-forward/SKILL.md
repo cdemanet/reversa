@@ -1,6 +1,6 @@
 ---
 name: reversa-forward
-description: "Orchestrator of the Reversa evolution pipeline. Detects the physical stage of the active feature in `_reversa_forward/` and suggests the next forward cycle agent (requirements, clarify, plan, to-do, audit, quality, coding). Use when the user types "/reversa-forward", "reversa-forward", "iniciar evolução", "iniciar pipeline forward" or asks to drive a feature cycle from zero to code. Does not write feature artifacts on its own, only routes."
+description: "Orchestrator of the Reversa evolution pipeline. Detects the physical stage of the active feature in `_reversa_forward/` and suggests the next forward cycle agent (requirements, clarify, plan, to-do, audit, quality, coding, sync). Use when the user types \"/reversa-forward\", \"reversa-forward\", \"start evolution\", \"start forward pipeline\" or asks to drive a feature cycle from zero to code. Does not write feature artifacts on its own, only routes."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:
@@ -138,6 +138,7 @@ The stage detection is by **physical artifacts of the feature**, never by auto-d
 4. For `requirements`, also count `[DOUBT]` markers in `requirements.md` (useful to decide between clarify and plan)
 5. For `coding-in-progress`, count `[X]` versus `[ ]` actions in `actions.md`
 6. Also consider the `paused-features` field in `active-requirements.json` (if it exists and has entries, there are paused features available for resume)
+7. For the `done` stage, also check if there is an addendum for the feature in `<output_folder>/addenda/` (a file whose name starts with the `feature-id`). An addendum present and in force (without a supersession line in the Validity section) means the delivery has already been converged in the extraction
 
 ## Routing matrix
 
@@ -152,7 +153,8 @@ The next skill is decided by the combination between physical stage and free arg
 | `requirements` stage without `[DOUBT]` | Indifferent | `/reversa-plan` |
 | `plan` stage | Indifferent | `/reversa-to-do` |
 | `coding-in-progress` stage | Indifferent | `/reversa-coding` |
-| `done` stage | Indifferent | Conclusion, offers `/reversa-resume` if `paused-features` has entries, or suggests `/reversa-requirements` for a new feature |
+| `done` stage without addendum in `addenda/` | Indifferent | `/reversa-sync` (converge the delivery in the extraction) |
+| `done` stage with in-force addendum | Indifferent | Conclusion, offers `/reversa-resume` if `paused-features` has entries, or suggests `/reversa-requirements` for a new feature |
 
 **Important:** if the user passed a free argument AND there is an active feature in a stage different from `done` or `empty`, do NOT replicate the "continue / parallel / abandon" menu here. Just communicate the ambiguity and offer the two exits, without deciding:
 
@@ -179,7 +181,7 @@ Use exactly this format (replacing the placeholders with real values):
 > Hello, `<user_name>`. Reversa forward pipeline:
 >
 > ```
-> requirements → clarify? → plan → to-do → audit? → quality? → coding
+> requirements → clarify? → plan → to-do → audit? → quality? → coding → sync?
 > ```
 >
 > Current state: **`<descriptive state>`**
@@ -192,13 +194,14 @@ Use exactly this format (replacing the placeholders with real values):
 
 ### Additional lines per state
 
-- **No active feature, no argument:** list the pipeline agents with one line per agent (`reversa-requirements`, `reversa-clarify`, `reversa-plan`, `reversa-to-do`, `reversa-audit`, `reversa-quality`, `reversa-coding`) and ask: "Describe in one sentence the feature you want to build."
+- **No active feature, no argument:** list the pipeline agents with one line per agent (`reversa-requirements`, `reversa-clarify`, `reversa-plan`, `reversa-to-do`, `reversa-audit`, `reversa-quality`, `reversa-coding`, `reversa-sync`) and ask: "Describe in one sentence the feature you want to build."
 - **No active feature, with argument:** show the argument in quotes and say it will be the starting point of `/reversa-requirements`.
 - **`requirements` stage with N `[DOUBT]` markers:** say "`requirements.md` has `<N>` open point(s), worth running `/reversa-clarify` before the plan."
 - **`requirements` stage without `[DOUBT]`:** say "`requirements.md` is closed, ready for the plan."
 - **`plan` stage:** say "`roadmap.md` is ready, needs to be decomposed into atomic actions."
 - **`coding-in-progress` stage:** say "`<N>` of `<M>` actions completed in `actions.md`, coding in progress."
-- **`done` stage:** say "All actions are closed. If you want, resume a paused feature with `/reversa-resume` or start another with `/reversa-requirements <description>`."
+- **`done` stage without addendum:** say "All actions are closed, need to converge the delivery in the extraction with `/reversa-sync` so `<output_folder>/` doesn't become outdated."
+- **`done` stage with in-force addendum:** say "All actions are closed and the delivery has already been converged in `<output_folder>/addenda/`. If you want, resume a paused feature with `/reversa-resume` or start another with `/reversa-requirements <description>`."
 - **`empty` stage (folder without `requirements.md`):** say "The `feature-dir` in `active-requirements.json` exists but has no `requirements.md`. Recommended to start over with `/reversa-requirements`."
 
 If there are `paused-features` with entries, in any state, add a line:

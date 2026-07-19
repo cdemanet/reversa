@@ -1,6 +1,6 @@
 ---
 name: reversa-docs-storyteller
-description: "Storyteller of the Reversa Docs Team. Produces interactive glossary (Concept Explainer with client-side search), navigable slide deck (6 to 10 slides) and a detailed page per feature in How a Feature Works pattern. Activate with /reversa-docs-storyteller, reversa-docs-storyteller, regenerar glossário, refazer deck, páginas por feature."
+description: "Storyteller of the Reversa Docs Team. Produces interactive glossary (Concept Explainer with client-side search), navigable slide deck (6 to 10 slides) and a detailed page per feature in How a Feature Works pattern. Activate with /reversa-docs-storyteller, reversa-docs-storyteller, regenerate glossary, redo deck, pages per feature."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

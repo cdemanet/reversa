@@ -1,6 +1,6 @@
 ---
 name: reversa-migrate
-description: "Orchestrator of the Reversa Migration Team. Conducts the migration pipeline after `/reversa` has populated _reversa_sdd/. Collects the brief, invokes the 6 agents (Paradigm Advisor → Curator → Strategist → Designer → Screen Translator → Inspector) with human pauses, and generates the final handoff.md. Use when the user types `/reversa-migrate`, `reversa-migrate`, `migrar sistema`, or `iniciar migração`."
+description: "Orchestrator of the Reversa Migration Team. Conducts the migration pipeline after `/reversa` has populated _reversa_sdd/. Collects the brief, invokes the 6 agents (Paradigm Advisor → Curator → Strategist → Designer → Screen Translator → Inspector) with human pauses, and generates the final handoff.md. Use when the user types `/reversa-migrate`, `reversa-migrate`, `migrate system`, or `start migration`."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

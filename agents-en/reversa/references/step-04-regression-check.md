@@ -1,6 +1,6 @@
 # Step 4, semantic regression check
 
-> This step only runs on **re-extractions**, that is, when a reverse pipeline is executed on a project that has already gone through at least one `/reversa-coding` cycle. In projects without `_reversa_forward/` or without `regression-watch.md`, this step is silently skipped.
+> This step only runs on **re-extractions**, that is, when a reverse pipeline is executed on a project that has already gone through at least one `/reversa-coding` cycle. In projects without `_reversa_forward/` or without `regression-watch.md`, the regression check is silently skipped (the "Addenda reconciliation" at the end is still verified).
 
 ## Why it exists
 
@@ -10,9 +10,9 @@ Reversa is not just one-shot extraction. Every `/reversa-coding` leaves in `_rev
 
 After the **last agent in the plan** finishes, before the final "extraction completed" message. The trigger is position (last item of `.reversa/plan.md`), not agent name, because the last agent varies according to the optional items selected at install (Reviewer may be absent, for example). Run the checks in order:
 
-1. Check whether `_reversa_forward/` exists in the project root. If it doesn't, end this step silently.
+1. Check whether `_reversa_forward/` exists in the project root. If it doesn't, skip directly to the "Addenda reconciliation" section.
 2. List all subfolders of `_reversa_forward/` that contain `regression-watch.md`.
-3. If the list is empty, end.
+3. If the list is empty, skip directly to the "Addenda reconciliation" section.
 4. Otherwise, proceed with the procedure below, one feature at a time.
 
 ## Procedure per feature
@@ -68,6 +68,22 @@ If there is at least one red, present a highlighted warning:
 > 🔴 **Attention**, **N semantic regressions** were detected in previously coded features. Review before continuing.
 
 If `setup.json#watch.block-on-red` is `true`, suggest the user **not** to proceed with new `/reversa-requirements` until each red is triaged. Reversa only alerts, never automatically blocks the user's flow.
+
+## Addenda reconciliation
+
+After going through the features (or even if none has `regression-watch.md`), check whether `_reversa_sdd/addenda/` exists with `.md` files created by `/reversa-sync`. If it exists:
+
+1. For each addendum whose `## Validity` section does NOT contain a line `Superseded by re-extraction of ...`, append to the end of that section the line:
+
+   ```
+   Superseded by re-extraction of YYYY-MM-DD.
+   ```
+
+2. Never delete the addendum, never rewrite previous lines in the Validity section, never touch the other sections. Append-only, atomic write.
+3. Addenda already superseded in previous re-extractions stay as they are (they are history).
+4. Include in the user report how many addenda were marked as superseded in this re-extraction.
+
+The reason: addenda are bridges between a forward delivery and the re-extraction. With the extraction regenerated from the current code, the deltas described in the addenda are already absorbed in the main artifacts, and consumers (for example `/reversa-requirements` and `/reversa-plan`) should only consider in-force addenda.
 
 ## Special case, without `_reversa_sdd/`
 

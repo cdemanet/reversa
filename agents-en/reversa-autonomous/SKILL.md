@@ -1,6 +1,6 @@
 ---
 name: reversa-autonomous
-description: "Autonomous mode of Reversa. Runs the same sequence of agents of /reversa end-to-end, without intermediate stops, concentrating all questions in a single interview at the start. Designed for unsupervised sessions (e.g. YOLO mode of Claude Code with automatic permissions). Use when the user types "/reversa-autonomous", "reversa autonomous", "reversa autônomo", "rodar reversa sem parar" or asks for the complete analysis without interruptions."
+description: "Autonomous mode of Reversa. Runs the same sequence of agents of /reversa end-to-end, without intermediate stops, concentrating all questions in a single interview at the start. Designed for unsupervised sessions (e.g. YOLO mode of Claude Code with automatic permissions). Use when the user types "/reversa-autonomous", "reversa autonomous", "run reversa without stopping" or asks for the complete analysis without interruptions."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

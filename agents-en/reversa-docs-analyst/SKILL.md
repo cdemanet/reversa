@@ -1,6 +1,6 @@
 ---
 name: reversa-docs-analyst
-description: "Analyst of the Reversa Docs Team. Produces the quantitative data pages of the mini-site: metrics dashboard with Highcharts (LOC treemap, complexity bars, dependency sankey, histogram) and interactive timeline of project events. Activate with /reversa-docs-analyst, reversa-docs-analyst, regenerar métricas, refazer timeline, dashboard do projeto."
+description: "Analyst of the Reversa Docs Team. Produces the quantitative data pages of the mini-site: metrics dashboard with Highcharts (LOC treemap, complexity bars, dependency sankey, histogram) and interactive timeline of project events. Activate with /reversa-docs-analyst, reversa-docs-analyst, regenerate metrics, redo timeline, project dashboard."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

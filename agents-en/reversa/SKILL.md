@@ -1,6 +1,6 @@
 ---
 name: reversa
-description: "Main entry point of Reversa. Orchestrates the complete analysis of a legacy system, generating executable specifications for AI agents. Use when the user types "/reversa", "reversa", "iniciar análise" or "engenharia reversa". It is the first skill to be called in any session."
+description: "Main entry point of Reversa. Orchestrates the complete analysis of a legacy system, generating executable specifications for AI agents. Use when the user types "/reversa", "reversa", "start analysis" or "reverse engineering". It is the first skill to be called in any session."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

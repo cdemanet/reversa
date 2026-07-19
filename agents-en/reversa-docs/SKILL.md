@@ -1,6 +1,6 @@
 ---
 name: reversa-docs
-description: "Orchestrator of the Reversa Docs Team. Generates a self-contained HTML mini-site in _reversa_docs/ with 3D architecture, dashboards, glossary, deck and per-feature pages, from the knowledge already extracted by Reversa core. Activate with /reversa-docs, reversa-docs, gerar documentação visual, mini-site do projeto, documentação interativa."
+description: "Orchestrator of the Reversa Docs Team. Generates a self-contained HTML mini-site in _reversa_docs/ with 3D architecture, dashboards, glossary, deck and per-feature pages, from the knowledge already extracted by Reversa core. Activate with /reversa-docs, reversa-docs, generate visual documentation, project mini-site, interactive documentation."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

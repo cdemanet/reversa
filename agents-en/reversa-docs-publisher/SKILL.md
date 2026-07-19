@@ -1,6 +1,6 @@
 ---
 name: reversa-docs-publisher
-description: "Editor-in-chief of the Reversa Docs Team. Generates index.html with hero and unique project seal, injects mini-seal into other pages, does auto-discovery of auxiliary HTMLs produced by other core agents, validates links and writes final telemetry. Activate with /reversa-docs-publisher, reversa-docs-publisher, regenerar index, refazer selo, atualizar índice."
+description: "Editor-in-chief of the Reversa Docs Team. Generates index.html with hero and unique project seal, injects mini-seal into other pages, does auto-discovery of auxiliary HTMLs produced by other core agents, validates links and writes final telemetry. Activate with /reversa-docs-publisher, reversa-docs-publisher, regenerate index, redo seal, update index."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

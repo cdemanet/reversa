@@ -1,6 +1,6 @@
 ---
 name: reversa-docs-mapper
-description: "Mapper of the Reversa Docs Team. Produces the spatial structure pages of the mini-site: 3D architecture (Code City via Three.js), 2D module map (force-directed via D3), and side-by-side topology (legacy vs modern vs hybrid). Activate with /reversa-docs-mapper, reversa-docs-mapper, regenerar arquitetura, refazer mapa de módulos, code city do projeto."
+description: "Mapper of the Reversa Docs Team. Produces the spatial structure pages of the mini-site: 3D architecture (Code City via Three.js), 2D module map (force-directed via D3), and side-by-side topology (legacy vs modern vs hybrid). Activate with /reversa-docs-mapper, reversa-docs-mapper, regenerate architecture, redo module map, project code city."
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:
