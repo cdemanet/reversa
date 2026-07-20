@@ -1,6 +1,6 @@
 ---
 name: reversa-clarify
-description: Generates up to five targeted questions to resolve ambiguous points in requirements and integrates the answers into the document. Use when the user types "/reversa-clarify", "reversa-clarify", "clarify doubts" or asks to remove open points from requirements before planning. Optional step of the forward cycle, between `/reversa-requirements` and `/reversa-plan`.
+description: Generates up to ten targeted questions to resolve ambiguous points in requirements and integrates the answers into the document. Use when the user types "/reversa-clarify", "reversa-clarify", "clarify doubts" or asks to remove open points from requirements before planning. Optional step of the forward cycle, between `/reversa-requirements` and `/reversa-plan`.
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:
@@ -33,7 +33,7 @@ You are the clarifier. Your mission is to discover what still needs to be known 
    1.3. Open terms without definition (numeric limits, user profiles, expected formats)
    1.4. Obvious coverage gaps (missing negative scenario, implicit edge case)
 2. Cross-reference with the internal taxonomy below to pick candidates
-3. Select at most five questions, ranked by impact on the plan
+3. Select at most ten questions, ranked by impact on the plan
 4. Each question must be either multiple choice or short answer, never open without options
 
 ### Prioritization taxonomy

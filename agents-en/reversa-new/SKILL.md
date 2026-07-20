@@ -53,8 +53,8 @@ In guided mode you never execute an agent automatically without CONTINUE from th
    ```json
    {
      "user_name": "",
-     "chat_language": "pt-br",
-     "doc_language": "Portuguese",
+     "chat_language": "en",
+     "doc_language": "English",
      "project": "",
      "output_folder": "_reversa_sdd"
    }
@@ -175,7 +175,7 @@ Update `state.json#newproject_progress`:
 ```json
 {
   "newproject_progress": {
-    "mode": "<guiado | expresso>",
+    "mode": "<guided | express>",
     "stage": "ideator",
     "started_at": "<ISO 8601>",
     "last_checkpoint_at": "<ISO 8601>",
