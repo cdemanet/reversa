@@ -1,15 +1,6 @@
 ---
 name: reversa-selo-generativo
-description: >
-  Creates seeded generative visual seals using p5.js, generating standalone HTML with reproducible
-  algorithmic art canvas. Use this skill whenever the user asks for a seal,
-  project visual identity, generative hero, unique reproducible cover, or artwork
-  derived from a hash. Should be activated when the user mentions terms like "seal",
-  "generative seal", "project visual identity", "hero cover", "seeded artwork",
-  "Art Blocks style", "p5.js generative", "reproducible cover", "documentation seal"
-  or asks for a unique and reproducible decorative element derived from a string.
-  Works with any string as seed (soul.md hash, project name, arbitrary ID).
-  Always generates standalone HTML with p5.js via CDN.
+description: Creates seeded generative visual seals with p5.js, generating standalone HTML with reproducible algorithmic art derived from a hash or string. Use with "seal", "generative seal", "project visual identity", "hero cover", "seeded artwork", "reproducible cover", "documentation seal".
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

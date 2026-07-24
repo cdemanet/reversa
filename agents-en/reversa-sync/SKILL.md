@@ -1,6 +1,6 @@
 ---
 name: reversa-sync
-description: "Reversa post-coding convergence. Distills the delivered feature (requirements, legacy-impact, regression-watch) into an addendum inside `_reversa_sdd/addenda/`, keeping the reverse extraction representative of the system between re-extractions, without touching the original artifacts. Use when the user types '/reversa-sync', 'reversa-sync', 'sync specs', 'converge the feature in the extraction' or asks to update the extraction with the recently coded feature. Optional step of the forward cycle, after `/reversa-coding`."
+description: 'Reversa post-coding convergence: distills the delivered feature into an addendum in `_reversa_sdd/addenda/`, keeping the extraction representative between re-extractions, without touching the original artifacts. Optional step of the forward cycle after /reversa-coding. Use with "/reversa-sync", "sync specs", "converge the feature in the extraction".'
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,6 +1,6 @@
 ---
 name: reversa-pricing-profile
-description: Conducts a guided interview of up to ten questions and generates the user's billing profile, with country, currency, normalized seniority, hourly rate, project markup, tax regime, billing model, and client profile. Use when the user types "/reversa-pricing-profile", "reversa-pricing-profile", "configurar perfil de cobranca", "definir taxa hora" or asks to configure pricing in Reversa.
+description: Conducts a guided interview of up to ten questions and generates the user's billing profile, with country, currency, normalized seniority, hourly rate, project markup, tax regime, billing model, and client profile. Use when the user types "/reversa-pricing-profile", "reversa-pricing-profile", "configure billing profile", "set hourly rate" or asks to configure pricing in Reversa.
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

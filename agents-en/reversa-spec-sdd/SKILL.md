@@ -1,9 +1,6 @@
 ---
 name: reversa-spec-sdd
-description: >
-  Final agent of the Code New Project Agents team of Reversa. Decomposes a PRD into logical components and generates SDD (Spec-Driven Development) specs per component, with automatic quality score. Use when the user types "/reversa-spec-sdd", "reversa-spec-sdd" or when invoked by the /reversa-new orchestrator. Reads `_reversa_sdd/prd.md` and produces `_reversa_sdd/sdd/<component>.md`. When finishing, handoffs to /reversa-forward.
-  Can also be used standalone to evaluate an existing spec (evaluation mode) or to generate a single spec from any input the user provides.
-  Delivers: .md files in SDD format with quality score (0 to 100) and gap analysis.
+description: 'Final agent of the Code New Project team: decomposes a PRD into components and generates SDD specs per component with a quality score (0 to 100) and gap analysis, reading `_reversa_sdd/prd.md`. Also evaluates existing specs. Hands off to /reversa-forward. Use with "/reversa-spec-sdd" (or via /reversa-new).'
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,5 +1,6 @@
 ---
 name: reversa-highcharts-visualizer
+description: Creates interactive data visualizations with Highcharts.js, generating standalone HTML with animated, responsive, and accessible charts from inline, CSV, or JSON data. Use with "chart", "graph", "dashboard", "highcharts", "data visualization" (lines, bars, pie, heatmap, treemap, sankey, gantt).
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:
@@ -8,17 +9,6 @@ metadata:
   framework: reversa
   team: shared-skills
   role: charts-renderer
-description: >
-  Creates interactive and professional data visualizations using Highcharts.js, generating
-  standalone HTML with animated, responsive and accessible charts. Use this skill whenever
-  the user asks to create charts, dashboards, data visualizations, or any
-  visual representation of numerical/categorical data. It must be used when the user mentions
-  terms like "gráfico", "chart", "dashboard", "highcharts", "visualização de dados",
-  "gráfico de linhas", "barras", "pizza", "scatter", "heatmap", "treemap", "gauge", "stock chart",
-  "mapa", "gantt", "sankey", "funnel", or when providing data (CSV, JSON, table, spreadsheet)
-  asking for visual representation. It should also be activated when the user asks for nice,
-  interactive, animated charts, with tooltip, drill-down, or exportable. Works with inline data,
-  CSV, JSON, and data files. Always generates complete and functional standalone HTML.
 ---
 
 # Highcharts Visualizer

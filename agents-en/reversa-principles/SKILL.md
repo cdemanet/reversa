@@ -1,6 +1,6 @@
 ---
 name: reversa-principles
-description: Creates or updates the project's enduring principles and propagates adjustment suggestions to dependent templates. Principles are rare, change little, and influence all artifacts. Use when the user types "/reversa-principles", "reversa-principles", "definir principios" or asks to create/change/retire a project principle. Can run even before the first feature.
+description: Creates or updates the project's enduring principles and propagates adjustment suggestions to dependent templates. Principles are rare, change little, and influence all artifacts. Use when the user types "/reversa-principles", "reversa-principles", "define principles" or asks to create/change/retire a project principle. Can run even before the first feature.
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

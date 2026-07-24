@@ -1,6 +1,6 @@
 ---
 name: reversa-resume
-description: Resumes a paused feature (listed in paused-features of active-requirements.json) and makes it active. Use when the user types "/reversa-resume", "reversa-resume", "retomar feature pausada" or asks to go back to a previous feature. Does NOT create new features, only swaps the active one for the chosen one and (when it makes sense) moves the current active to paused-features.
+description: Resumes a paused feature (listed in paused-features of active-requirements.json) and makes it active. Use when the user types "/reversa-resume", "reversa-resume", "resume paused feature" or asks to go back to a previous feature. Does NOT create new features, only swaps the active one for the chosen one and (when it makes sense) moves the current active to paused-features.
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

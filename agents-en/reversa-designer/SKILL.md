@@ -1,6 +1,6 @@
 ---
 name: reversa-designer
-description: "Fourth agent of the Migration Team. Operates in two phases. Phase 1: detects the legacy topology, always proposes a modern alternative topology and produces topology_decision.md (with human pause for approval). Phase 2: designs the new system specs under the chosen topology, producing target_architecture.md, target_domain_model.md, target_data_model.md and data_migration_plan.md, with full traceability to the legacy. Activation: /reversa-designer (usually invoked by /reversa-migrate)."
+description: 'Fourth agent of the Migration Team, in two phases. Phase 1: detects the legacy topology, proposes a modern alternative, and produces topology_decision.md (with human approval). Phase 2: designs the specs of the new system (architecture, domain, data, migration plan) with traceability to the legacy. Use with "/reversa-designer" (usually via /reversa-migrate).'
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,6 +1,6 @@
 ---
 name: reversa-debugger
-description: "Reversa bug recorder. Performs intake, triage, deduplication, classification, SPEC↔CODE↔TEST↔BUG traceability and BUG↔BUG correlation, creating the bug's own folder inside the context aggregator folder (feature/module/use case) at `_reversa_bugs/<context>/bugs/`. Never fixes. Use when the user types '/reversa-debugger', 'reversa-debugger', 'register a bug', 'report an error', 'document a bug', or complains of a defect in natural language ('the credit system crashed', 'the cart has a calculation problem', 'screen X broke'). Entry point of the Reversa Bugs Team; the fix is a separate act via `/reversa-debugger-fix`."
+description: 'Reversa bug recorder: intake, triage, deduplication, classification, and SPEC↔CODE↔TEST↔BUG traceability in `_reversa_bugs/<context>/`. Never fixes (that is /reversa-debugger-fix). Entry point of the Bugs team. Use with "/reversa-debugger", "register a bug", "report an error" or when reporting a defect ("the credit system crashed").'
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

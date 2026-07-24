@@ -1,6 +1,6 @@
 ---
 name: reversa-to-do
-description: Decomposes the roadmap into atomic actions with sequential IDs, dependencies, and parallelism marker. Use when the user types "/reversa-to-do", "reversa-to-do", "decompor em tarefas" or asks to turn the roadmap into an executable list. Fourth skill in the forward cycle, after `/reversa-plan`.
+description: Decomposes the roadmap into atomic actions with sequential IDs, dependencies, and parallelism marker. Use when the user types "/reversa-to-do", "reversa-to-do", "decompose into tasks" or asks to turn the roadmap into an executable list. Fourth skill in the forward cycle, after `/reversa-plan`.
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

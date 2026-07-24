@@ -1,6 +1,6 @@
 ---
 name: reversa-new
-description: "Orchestrator of the Code New Project Agents team of Reversa. Conducts the greenfield pipeline, starting from an idea in natural language and producing brainstorm, personas, PRD, and SDD specs in `_reversa_sdd/`. Has two modes: guided (step by step with CONTINUE, ends at the specs) and express (single interview at the start and end-to-end execution, bridging into the forward cycle until the code). Use when the user types \"/reversa-new\", \"/reversa-new express\", \"reversa-new\", \"start a new project\", \"create a project from scratch\", \"from idea to code\" or asks to start a greenfield product."
+description: 'Reversa greenfield orchestrator: from an idea in natural language to brainstorm, personas, PRD, and SDD specs in `_reversa_sdd/`. Two modes, guided (step by step) and express (single interview through to code). Use with "/reversa-new", "/reversa-new expresso", "start a new project", "from idea to code".'
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

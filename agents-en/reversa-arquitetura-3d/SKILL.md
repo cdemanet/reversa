@@ -1,17 +1,6 @@
 ---
 name: reversa-arquitetura-3d
-description: >
-  Creates interactive 3D visualizations of software architecture using Three.js, generating
-  standalone HTML with scenes navigable by free camera. Use this skill whenever the
-  user asks to visualize architecture, modules, dependencies, layers or call hierarchy
-  in 3D. It must be activated when the user mentions terms like "code city",
-  "cidade de código", "arquitetura 3D", "dependency graph 3D", "module map 3D", "layer
-  stack 3D", "call graph 3D", "architecture tour", "tour pela arquitetura", "visualizar
-  software em 3D", "Three.js" in the context of software, or asks to explore a system's
-  structure with a 3D camera. It works with module JSON (name, folder, LOC, complexity)
-  and dependencies (oriented graph). It always generates complete standalone HTML. When
-  run by the Reversa Docs team, it uses Three.js served locally in assets/vendor/
-  (offline-first).
+description: Creates interactive 3D visualizations of software architecture with Three.js, generating standalone HTML navigable by free camera from module and dependency JSON. Use with "3D architecture", "code city", "3D dependency graph", "3D call graph", "architecture tour".
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

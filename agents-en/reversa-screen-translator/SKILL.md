@@ -1,6 +1,6 @@
 ---
 name: reversa-screen-translator
-description: "Fifth agent of the Migration Team. Translates the legacy system's screens into executable specifications, closing the gap between the design-system catalog and the ready code. Operates in two phases. Phase 1: detects source/target platform, presents the modes (literal, modernized, hybrid) and requires human decision, producing screen_modernization_decision.md. Phase 2: generates target_screens.md, screen_deviation_log.md and, when the legacy oracle runs, golden files with manifest.yaml for the Inspector to consume. Activation: /reversa-screen-translator (generally invoked by /reversa-migrate, between Designer and Inspector)."
+description: 'Fifth agent of the Migration Team, in two phases. Phase 1: detects origin/target platform, presents the modes (literal, modernized, hybrid) and requires a human decision. Phase 2: generates the screen specs (target_screens.md, deviation log, and golden files when there is a legacy oracle). Use with "/reversa-screen-translator" (usually via /reversa-migrate).'
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:
