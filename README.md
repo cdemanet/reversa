@@ -99,14 +99,25 @@ For other workflows, use the matching entry command:
 | Goal | Command |
 |------|---------|
 | Analyze an existing legacy and produce specs | `/reversa` |
-| Start a brand new project from a one-line idea | `/reversa-new` |
+| Run the same analysis end to end, without intermediate stops | `/reversa-autonomous` |
+| Start a brand new project from a one-line idea | `/reversa-new` (add `expresso` to go all the way to code) |
 | Evolve the system one feature at a time, from spec to code | `/reversa-forward` |
+| Converge a delivered feature back into the extraction | `/reversa-sync` |
 | Rebuild the legacy on a modern stack | `/reversa-migrate` |
 | Render the extracted knowledge as an HTML mini-site | `/reversa-docs` |
 | Track and fix defects with causal traceability | `/reversa-debugger`, `/reversa-debugger-fix` |
 | Estimate effort and pricing on top of the specs | `/reversa-pricing-profile`, `/reversa-pricing-size`, `/reversa-pricing-estimate` |
 
 Each orchestrator pauses between agents and asks for `CONTINUAR` before advancing, so you stay in control of every step.
+
+### Unattended runs
+
+Two commands concentrate every question in a **single interview at the start** and then run without stopping, for sessions where nobody is watching the terminal (Claude Code YOLO mode or equivalent):
+
+- `/reversa-autonomous` — the full Discovery pipeline, same agents and same checkpoints as `/reversa`.
+- `/reversa-new expresso "<your idea>"` — greenfield from the idea all the way to implemented code, chaining into the forward cycle after the specs.
+
+Both keep the non-destructive rule intact: writes stay inside `.reversa/` and the output folders, and no destructive or outward-facing command (delete, `git push`, publish, install) is ever run on its own. Doubts that come up along the way are recorded with the 🟡 seal instead of interrupting the flow.
 
 ---
 
@@ -138,7 +149,7 @@ For a **greenfield** project (no legacy to extract), start with `/reversa-new` i
 
 ## Agents
 
-Reversa organizes its agents in **eight specialized Teams**. The Discovery Team (Reversa Agents Core) and the Bug Agents are always installed; five Teams are pre-checked in the installer and Translators are opt-in.
+Reversa organizes its agents in **nine specialized Teams**. The Discovery Team (Reversa Agents Core) and the Bug Agents are always installed; six Teams are pre-checked in the installer and Translators are opt-in.
 
 | Team | Purpose | Entry command |
 |------|---------|---------------|
@@ -149,6 +160,7 @@ Reversa organizes its agents in **eight specialized Teams**. The Discovery Team 
 | **Pricing and Size Agents** | Estimate effort, size and pricing on top of the specs | `/reversa-pricing-*` |
 | **Documentation Team** | Render the extracted knowledge as a self-contained HTML mini-site | `/reversa-docs` |
 | **Bug Agents** | Track, debate and fix defects with causal traceability to the specs | `/reversa-debugger` |
+| **Code Quality Agents** | Improve existing code without changing behavior: refactor, optimize, standardize, prune dead code | `/reversa-refactor` |
 
 ### Discovery Team, required
 
@@ -174,10 +186,13 @@ These run the main `/reversa` pipeline.
 | **Soul Extractor** | Produces a single executive Spec (`soul.md`) with purpose, core entities and founding decisions, useful right after Scout |
 | **Agents Help** | Explains every Reversa agent with analogies, useful for newcomers |
 | **Reconstructor** | Generates a bottom-up reconstruction plan from the specs and implements one task at a time, preserving tokens. Activation: `/reversa-reconstructor` |
+| **Autonomous** | Runs the same sequence as `/reversa` end to end, with a single interview at the start and no intermediate stops. Activation: `/reversa-autonomous` |
 
 ### Code New Project Agents (greenfield)
 
 For projects that do not exist yet. Activate with `/reversa-new` and the orchestrator drives the pipeline `Ideator → Researcher → Drafter → Spec SDD`, with a `CONTINUAR` checkpoint between agents. Final handoff suggests `/reversa-forward` to take the specs to code.
+
+The orchestrator has **two modes**. In *guided* mode (default) it stops at every agent and ends at the specs. In *express* mode (`/reversa-new expresso "<your idea>"`) every question is concentrated in one interview at the start and, after `INICIAR`, the pipeline runs straight through the specs and into the forward cycle (`requirements → plan → to-do → coding`) until the code is on disk.
 
 | Agent | Role |
 |-------|------|
@@ -189,7 +204,7 @@ For projects that do not exist yet. Activate with `/reversa-new` and the orchest
 
 ### Code Forward Agents (evolution)
 
-The bridge from specs to running code. Pipeline: `requirements → clarify → quality → plan → to-do → audit → coding`. Use `/reversa-forward` as the entry point: it detects the **physical stage** of the active feature (by inspecting the artifacts on disk, not metadata) and suggests the next agent.
+The bridge from specs to running code. Pipeline: `requirements → clarify → quality → plan → to-do → audit → coding → sync`. Use `/reversa-forward` as the entry point: it detects the **physical stage** of the active feature (by inspecting the artifacts on disk, not metadata) and suggests the next agent.
 
 | Agent | Role |
 |-------|------|
@@ -201,6 +216,7 @@ The bridge from specs to running code. Pipeline: `requirements → clarify → q
 | **To-Do** | Decomposes the roadmap into atomic actions across five phases with stable IDs, dependencies and parallelism markers. Produces `actions.md` |
 | **Audit** | Read-only cross-check between requirements, roadmap and actions. Produces `audit/cross-check.md` |
 | **Coding** | Executes `actions.md`, flips checkboxes, writes `progress.jsonl`, `legacy-impact.md` and `regression-watch.md` |
+| **Sync** | Optional convergence step after coding. Distills the delivered feature into an addendum in `_reversa_sdd/addenda/`, so the extraction keeps describing the system as it is today until the next full re-extraction. Never edits the original artifacts. Activation: `/reversa-sync` |
 | **Principles** | Manages durable project rules (`principles.md`) and emits impact reports when they change |
 | **Resume** | Swaps the active feature with one from the `paused-features` queue |
 
@@ -255,6 +271,21 @@ A repository-native causal defect memory, organized by **context** (the feature/
 | **Depth Inspection** | Deep sweep of a problematic feature through specialized lenses (spec conformance, data flow, contracts, error states, test coverage, concurrency). Diagnosis only; confirmed findings become registered bugs. Activated via `/reversa-depth-inspection` |
 | **Bug Graph** | Regenerates the derived views: index, compact catalog, sparse relation matrix, mermaid graph with clusters and impact score, and the BUG ↔ SPEC traceability matrix on both ends (`_reversa_bugs/generated/` and `_reversa_sdd/traceability/bugs.md`). Activated via `/reversa-debugger-graph` |
 
+### Code Quality Agents
+
+Perfective and preventive maintenance on code that already works: improve the internal structure **without changing observable behavior**, and prove that preservation before touching the code. Organized by **context** under `_reversa_refactor/<context>/`, with each transformation anchored to the soul (`soul.md`) and confirmed specs. The founding rule: proposing a transformation and applying it are separate acts, and nothing touches the legacy without proof of behavior preservation (a **safety net** of characterization tests, plus soul and regression checks). Project code changes only through an approved, reversible diff gate.
+
+| Agent | Role |
+|-------|------|
+| **Refactor** | Orchestrator: inventories improvement opportunities, prioritizes by real ROI (hotpath, not aesthetics), routes to the right specialist and runs the gates. Never applies a transformation. Activated via `/reversa-refactor` |
+| **Restructure** | Internal structure at method/class level via the Fowler catalog, in small reversible steps. Activated via `/reversa-restructure` |
+| **Modularize** | Splits a large piece into cohesive modules with well-defined responsibility, respecting the soul's boundaries. Activated via `/reversa-modularize` |
+| **Decouple** | Reduces direct dependencies (dependency inversion, Feathers seams, cycle breaking), coupling measured before and after. Activated via `/reversa-decouple` |
+| **Optimize** | Reduces time, memory and resource use, with a before/after measurement and preserved output. Activated via `/reversa-optimize` |
+| **Simplify** | Replaces complex logic with a simpler one, with a proof of output equivalence. Activated via `/reversa-simplify` |
+| **Standardize** | Applies naming, formatting and organization conventions from the project's dominant pattern, never changing semantics. Activated via `/reversa-standardize` |
+| **Prune** | Removes dead code, and only what it can prove is dead, telling dead code from a suspected orphan. Activated via `/reversa-prune` |
+
 ---
 
 ## What is generated
@@ -286,6 +317,7 @@ _reversa_sdd/
 ├── ui/                       # Interface specs (Visor)
 ├── database/                 # Database specs (Data Master)
 ├── design-system/            # Design tokens (Design System)
+├── addenda/                  # Post-delivery addenda, one per feature (Sync)
 └── traceability/
     ├── spec-impact-matrix.md # Which spec impacts which
     └── code-spec-matrix.md   # Code file to corresponding spec
@@ -323,9 +355,13 @@ _reversa_forward/
         └── cross-check.md
 ```
 
+After `/reversa-coding`, the optional `/reversa-sync` distills the delivered feature into `_reversa_sdd/addenda/<feature-id>-<short-name>.md`. The addendum is a bridge: it keeps the extraction representative of the system as it is today, points at the sections of `architecture.md` and `domain.md` that drifted, and is marked as superseded by the next full re-extraction. Original extraction artifacts are never edited.
+
 The Documentation Team writes only inside `_reversa_docs/` (HTML mini-site, fully offline).
 
 Bug Agents write only inside `_reversa_bugs/` (one folder per bug, plus generated views), spec addenda in `_reversa_sdd/addenda/` and the generated mirror `_reversa_sdd/traceability/bugs.md`. Original specs are never edited; project code changes only through approval gates with explicit diffs.
+
+Code Quality Agents write only inside `_reversa_refactor/` (opportunities, plans and transformation records per context). Project code changes exclusively through an approved, reversible diff gate, and only after the safety net proves behavior is preserved.
 
 ### Confidence scale
 
