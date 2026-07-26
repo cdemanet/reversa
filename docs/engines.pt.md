@@ -21,6 +21,7 @@ O Reversa funciona com as principais engines de IA do mercado. O instalador dete
 | **GitHub Copilot** | `.github/copilot-instructions.md` | `.agents/skills/reversa-*/` | `/reversa` |
 | **Aider** | `CONVENTIONS.md` | `.agents/skills/reversa-*/` | `reversa` |
 | **Amazon Q Developer** | `.amazonq/rules/reversa.md` | `.agents/skills/reversa-*/` | `/reversa` |
+| **Pi** | `AGENTS.md` | `.agents/skills/reversa-*/` | `/reversa` |
 
 ---
 
@@ -87,6 +88,12 @@ Agente de codificação para terminal. O entry file `CONVENTIONS.md` na raiz é 
 ## Amazon Q Developer
 
 CLI de IA da AWS. Usa regras em `.amazonq/rules/` para instruir o agente por projeto. O instalador cria `.amazonq/rules/reversa.md` sem interferir em outras regras que você já tenha nessa pasta.
+
+---
+
+## Pi
+
+Harness de agente minimalista do [pi.dev](https://pi.dev) (Earendil Inc.). Lê `AGENTS.md` (ou `CLAUDE.md`) no startup a partir do diretório atual e dos diretórios pai, e descobre skills seguindo o [padrão Agent Skills](https://agentskills.io) em `.agents/skills/` (subindo pelos diretórios pai). O Reversa instala o mesmo `AGENTS.md` usado por Codex/Antigravity/Opencode, e coloca as skills em `.agents/skills/` — sem duplicação para `.pi/skills/`. A ativação é via `/reversa` (slash command) ou `/skill:reversa`. Comando CLI: `pi`. O Reversa não cria `.pi/settings.json`, `.pi/extensions/` nem recursos project-local do pi, então o prompt de trust do pi não é disparado.
 
 ---
 

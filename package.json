@@ -1,6 +1,6 @@
 {
   "name": "reversa",
-  "version": "1.2.56",
+  "version": "1.2.57",
   "description": "Transform legacy systems into executable specifications for AI coding agents",
   "bin": {
     "reversa": "bin/reversa.js"
@@ -15,6 +15,7 @@
     "codex",
     "gemini",
     "cursor",
+    "pi",
     "agents"
   ],
   "files": [
