@@ -32,6 +32,7 @@ O `/reversa` é o ponto de entrada para analisar um sistema existente, mas não 
 | Evoluir o sistema uma feature por vez, da spec ao código | `/reversa-forward` |
 | Convergir uma feature entregue de volta na extração | `/reversa-sync` |
 | Reconstruir o legado em uma stack moderna | `/reversa-migrate` |
+| Melhorar a estrutura interna sem mudar o comportamento observável | `/reversa-refactor` |
 | Renderizar o conhecimento extraído como mini-site HTML | `/reversa-docs` |
 | Registrar e corrigir defeitos com rastreabilidade causal | `/reversa-debugger`, `/reversa-debugger-fix` |
 | Estimar esforço, tamanho e preço a partir das specs | `/reversa-pricing-profile`, `/reversa-pricing-size`, `/reversa-pricing-estimate` |

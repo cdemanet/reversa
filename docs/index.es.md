@@ -60,7 +60,7 @@ Eso es todo. Reversa toma el volante y te guía hasta el final.
 
 - **Agentes**
 
-    8 Teams especializados: Core, New Project, Code Forward, Migration, Documentation, Pricing, Bug Agents y Translators.
+    9 Teams especializados: Core, New Project, Code Forward, Migration, Code Quality, Documentation, Pricing, Bug Agents y Translators.
 
     [:octicons-arrow-right-24: Ver agentes](agentes/index.md)
 
