@@ -30,6 +30,7 @@ That's it. Reversa takes control and coordinates the entire analysis from there.
 | Same analysis, end to end, with no intermediate stops | `/reversa-autonomous` |
 | Start a brand new project from a one-line idea | `/reversa-new` (add `expresso` to go all the way to code) |
 | Evolve the system one feature at a time, spec to code | `/reversa-forward` |
+| Add a short amendment to the feature you just delivered | `/reversa-add` |
 | Converge a delivered feature back into the extraction | `/reversa-sync` |
 | Rebuild the legacy on a modern stack | `/reversa-migrate` |
 | Improve the internal structure without changing observable behavior | `/reversa-refactor` |

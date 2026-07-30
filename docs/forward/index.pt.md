@@ -31,6 +31,9 @@ Marcado por padrão no instalador.
 /reversa-coding          (executa actions.md em código)
         │
         ▼
+/reversa-add             (opcional e repetível, emenda curta: spec primeiro, depois código)
+        │
+        ▼
 /reversa-sync            (opcional, converge a entrega em _reversa_sdd/addenda/)
 ```
 
@@ -52,6 +55,7 @@ Marcado por padrão no instalador.
 | `reversa-audit` | audit | Auditor estritamente leitor: contradições e lacunas entre requirements, roadmap e actions, severidade reportada. |
 | `reversa-quality` | quality | Revisa a clareza da escrita do `requirements.md`. Não verifica testes de implementação. |
 | `reversa-coding` | coding | Executa `actions.md` em código real, atualiza checkboxes e deixa `legacy-impact.md` e `regression-watch.md`. |
+| `reversa-add` | add | Opcional e repetível, depois do coding. Emenda curta na feature entregue: registra em `## Emendas` no `requirements.md` e implementa no mesmo passo. Recusa o que exigir dependência nova, mudança de schema ou contrato, superfície pública nova, caminho de auth, ou o que estiver fora do escopo da feature ativa. |
 | `reversa-sync` | sync | Opcional, depois do coding. Destila a feature entregue em um adendo em `_reversa_sdd/addenda/`, mantendo a extração representativa até a próxima re-extração. Não edita os artefatos originais. |
 | `reversa-principles` | principles | Cria e mantém princípios duradouros do projeto, separados dos requisitos de cada feature. |
 | `reversa-resume` | resume | Retoma uma feature pausada listada em `paused-features` de `active-requirements.json`. |

@@ -109,7 +109,23 @@ El ejecutor. Recorre `actions.md` fase por fase, respeta el paralelismo `[//]` y
 
 ---
 
-## 9. Sync
+## 9. Add
+
+**Comando:** `/reversa-add`
+
+El enmendador. Después de entregar una feature siempre aparecen ajustes de minutos: cambiar un texto, agrandar un título, poner un loading, corregir un espaciado. Correr todo el pipeline forward para eso es demasiado caro, y pedirlo directo en el chat deja la spec atrás del código. `/reversa-add` cierra ese intervalo: registra la enmienda en la spec de la feature activa e implementa en el mismo paso, en ese orden.
+
+Rechazar es parte del trabajo. Dos trabas corren antes de cualquier escritura. La **traba de tamaño** rechaza lo que exija dependencia nueva, cambio de schema o de contrato de API, superficie pública nueva, o alteración en camino de autenticación, permiso o pago. La **traba de pertenencia** rechaza lo que no trate de lo que la feature activa entregó, medido por la tabla de archivos afectados del `legacy-impact.md` y por el objetivo declarado en `requirements.md`. Cualquiera de las dos que se active y el skill apunta a `/reversa-requirements` sin escribir una línea.
+
+Las enmiendas reciben IDs `E001`, `E002`, ... y entran en una sección `## Emendas`. Las acciones que agrega al `actions.md` nacen cerradas `[X]`, para que `/reversa-sync` nunca alerte sobre trabajo ya terminado.
+
+**Produce:** entradas en `## Emendas` en `requirements.md` y en `actions.md`, código fuente, filas nuevas en `legacy-impact.md` y líneas en `progress.jsonl`.
+
+**Requiere:** una feature activa en `.reversa/active-requirements.json` y un `legacy-impact.md` generado por `/reversa-coding`.
+
+---
+
+## 10. Sync
 
 **Comando:** `/reversa-sync`
 
@@ -125,7 +141,7 @@ La adenda lleva una sección `## Vigência` (vigencia) y apunta a las secciones 
 
 ---
 
-## 10. Principles
+## 11. Principles
 
 **Comando:** `/reversa-principles`
 
@@ -135,7 +151,7 @@ Gestiona reglas duraderas del proyecto en `.reversa/principles.md`, separadas de
 
 ---
 
-## 11. Resume
+## 12. Resume
 
 **Comando:** `/reversa-resume`
 
@@ -158,6 +174,7 @@ Intercambia la feature activa con una de `paused-features`. Detecta la etapa fí
 /reversa-to-do                   # acciones atómicas desde roadmap.md
 /reversa-audit                   # cross-check entre los tres docs (read-only)
 /reversa-coding                  # ejecuta actions.md
+/reversa-add <ajuste>            # enmienda corta en la feature entregada
 /reversa-sync                    # converge la feature entregada en _reversa_sdd/addenda/
 /reversa-principles              # gestiona reglas duraderas
 /reversa-resume                  # cambia a una feature pausada
