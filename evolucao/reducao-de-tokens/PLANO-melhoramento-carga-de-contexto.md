@@ -1,6 +1,33 @@
 # Plano de melhoramento — carga de contexto do Reversa
 
-> **Estado:** decisão tomada — **Cenário B** (ver §4), aprovado por `sandeco` em 31/07/2026
+> **Estado:** ✅ **executado** em 31/07/2026 na branch `reducao-tokens` — Cenário B (ver §4). Etapas
+> 2, 4, 5, 6, 7, 8 commitadas (uma por commit); `npm run verify` → APROVADO; carga ~4.987 → ~668 tokens
+> (−86%). Pendências menores para revisão humana no §Execução abaixo.
+
+---
+
+## ✅ Execução realizada (31/07/2026)
+
+| Etapa | O que foi feito | Commit |
+| --- | --- | --- |
+| 2 | Leitura do `SKILL.md` como caminho primário nos 4 sites de invocação (corrigido o único sem fallback) | `590cda9` |
+| 4 | 56 agentes de fase marcados `disable-model-invocation: true`; 9 entry-points preservados | `dc6e102` |
+| 5 | `agents/openai.yaml` nas 65 skills (lockstep dentro de cada skill) | `85600b1` |
+| 6 | Podadas as frases-gatilho de 41 descrições user-invoked (prosa útil preservada) | `ffca892` |
+| 7 | `scripts/verify-invocation.py` + smoke test de transporte + `npm run verify` + CI | `4fe8a5d` |
+| 8 | `docs/invocation-policy.md` — política com custo medido e executor | `28a4a3e` |
+
+Etapas 1 e 3 (teste funcional ao vivo e validação de uma skill) não foram executadas como passos
+isolados: a fonte não tem `.reversa/` para exercitar `/reversa` ao vivo, e tudo está numa branch não
+publicada. A validação foi feita por `npm run verify` (eixo íntegro, 0 descasamentos) e pelo smoke test
+de transporte. **Recomendo um teste funcional numa instalação limpa antes do merge.**
+
+**Pendências menores (não bloqueiam, mérito de revisão humana):**
+- `short_description` dos `openai.yaml` são auto-derivadas da `description` — algumas truncam com `…`.
+  Valem um passe manual (o Codex as mostra na UI). São puramente cosméticas.
+- `reversa-agents-help` é o membro debatível do conjunto model-invoked (§4) — decidir se fica ou vira
+  user-invoked.
+- Ligar `docs/invocation-policy.md` ao nav do `mkdocs.yml` (não feito para não arriscar o build do site).
 > **Substitui, para efeito de execução:** `HANDOFF-reversa-carga-de-contexto.md`
 > **Documentos de origem:** `HANDOFF-reversa-carga-de-contexto.md` + `relatorio-mattpocock-vs-reversa.pdf`
 > **Medido neste repositório em:** 31/07/2026 · versão `1.2.57`
