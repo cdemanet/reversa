@@ -1,6 +1,6 @@
 ---
 name: reversa-extract-soul
-description: "Extrai a alma do projeto legado em uma única Spec síntese (soul.md), reunindo propósito, entidades centrais e decisões fundadoras. Roda logo após o Scout, é leve e não substitui Archaeologist/Detective. Ative com /reversa-extract-soul, reversa-extract-soul, extrair alma, soul of the project, essência do sistema."
+description: Extrai a alma do projeto legado em uma única Spec síntese (soul.md), reunindo propósito, entidades centrais e decisões fundadoras. Roda logo após o Scout, é leve e não substitui Archaeologist/Detective.
 disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI e demais agentes compatíveis com Agent Skills.
