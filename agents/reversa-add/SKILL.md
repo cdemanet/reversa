@@ -1,6 +1,7 @@
 ---
 name: reversa-add
 description: 'Emenda curta na feature ativa do ciclo forward: registra o ajuste no requirements.md, implementa e fecha a ação no mesmo passo. Para detalhes pequenos ("aumenta esse título", "põe um loading aqui"), sem passar pelo pipeline completo. Use com "/reversa-add", "emenda", "ajuste rápido na feature".'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI e demais agentes compatíveis com Agent Skills.
 metadata:
