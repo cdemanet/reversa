@@ -30,6 +30,7 @@ O `/reversa` é o ponto de entrada para analisar um sistema existente, mas não 
 | A mesma análise, de ponta a ponta, sem paradas intermediárias | `/reversa-autonomous` |
 | Começar um projeto novo a partir de uma ideia em uma linha | `/reversa-new` (com `expresso` vai até o código) |
 | Evoluir o sistema uma feature por vez, da spec ao código | `/reversa-forward` |
+| Emendar um ajuste curto na feature recém-entregue | `/reversa-add` |
 | Convergir uma feature entregue de volta na extração | `/reversa-sync` |
 | Reconstruir o legado em uma stack moderna | `/reversa-migrate` |
 | Melhorar a estrutura interna sem mudar o comportamento observável | `/reversa-refactor` |

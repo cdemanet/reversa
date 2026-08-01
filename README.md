@@ -102,6 +102,7 @@ For other workflows, use the matching entry command:
 | Run the same analysis end to end, without intermediate stops | `/reversa-autonomous` |
 | Start a brand new project from a one-line idea | `/reversa-new` (add `expresso` to go all the way to code) |
 | Evolve the system one feature at a time, from spec to code | `/reversa-forward` |
+| Add a short amendment to the feature you just delivered | `/reversa-add` |
 | Converge a delivered feature back into the extraction | `/reversa-sync` |
 | Rebuild the legacy on a modern stack | `/reversa-migrate` |
 | Render the extracted knowledge as an HTML mini-site | `/reversa-docs` |
@@ -216,6 +217,7 @@ The bridge from specs to running code. Pipeline: `requirements → clarify → q
 | **To-Do** | Decomposes the roadmap into atomic actions across five phases with stable IDs, dependencies and parallelism markers. Produces `actions.md` |
 | **Audit** | Read-only cross-check between requirements, roadmap and actions. Produces `audit/cross-check.md` |
 | **Coding** | Executes `actions.md`, flips checkboxes, writes `progress.jsonl`, `legacy-impact.md` and `regression-watch.md` |
+| **Add** | Optional and repeatable after coding. Short amendment on the delivered feature: records it in `## Emendas` in `requirements.md`, then implements. Refuses anything needing a new dependency, a schema or contract change, a new public surface, an auth path, or anything outside the active feature's scope. Activation: `/reversa-add` |
 | **Sync** | Optional convergence step after coding. Distills the delivered feature into an addendum in `_reversa_sdd/addenda/`, so the extraction keeps describing the system as it is today until the next full re-extraction. Never edits the original artifacts. Activation: `/reversa-sync` |
 | **Principles** | Manages durable project rules (`principles.md`) and emits impact reports when they change |
 | **Resume** | Swaps the active feature with one from the `paused-features` queue |
