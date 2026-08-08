@@ -108,6 +108,8 @@ plugins:
             Translators N8N->Specs->Python: Tradutores N8N->Specs->Python
             Documentation Team: Time de Documentação
             The 4 visual agents: Os 4 agentes visuais
+            Bug Agents: Agentes de Bugs
+            Code Quality Agents: Agentes de Qualidade de Código
             Forward orchestrator: Orquestrador Forward
             Requirements: Requirements
             Clarify: Clarify
@@ -167,6 +169,8 @@ plugins:
             Translators N8N->Specs->Python: Traductores N8N->Specs->Python
             Documentation Team: Equipo de Documentación
             The 4 visual agents: Los 4 agentes visuales
+            Bug Agents: Agentes de Bugs
+            Code Quality Agents: Agentes de Calidad de Código
             Forward orchestrator: Orquestador Forward
             Requirements: Requirements
             Clarify: Clarify

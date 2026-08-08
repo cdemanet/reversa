@@ -109,7 +109,23 @@ The executor. Walks `actions.md` phase by phase, respects `[//]` parallelism and
 
 ---
 
-## 9. Sync
+## 9. Add
+
+**Command:** `/reversa-add`
+
+The amender. After a feature ships, small adjustments always follow: change a label, enlarge a title, add a loading state, fix a spacing. Running the whole forward pipeline for that is too expensive, and asking for it straight in the chat leaves the spec behind the code. `/reversa-add` closes that gap: it records the amendment in the active feature's spec and implements it in the same pass, in that order.
+
+Refusing is part of the job. Two gates run before anything is written. The **size gate** rejects anything that needs a new dependency, a schema or API contract change, a new public surface, or a change in an auth, permission or payment path. The **belonging gate** rejects anything that is not about what the active feature delivered, measured against the affected-files table in `legacy-impact.md` and the goal stated in `requirements.md`. Either gate trips and the skill points at `/reversa-requirements` without writing a line.
+
+Amendments get IDs `E001`, `E002`, ... and land in an `## Emendas` section. Actions it appends to `actions.md` are born closed `[X]`, so `/reversa-sync` never nags about work already finished.
+
+**Produces:** entries in `## Emendas` in `requirements.md` and `actions.md`, source code, appended rows in `legacy-impact.md` and lines in `progress.jsonl`.
+
+**Requires:** an active feature in `.reversa/active-requirements.json` and a `legacy-impact.md` from `/reversa-coding`.
+
+---
+
+## 10. Sync
 
 **Command:** `/reversa-sync`
 
@@ -125,7 +141,7 @@ The addendum carries a `## Vigência` (validity) section and points at the extra
 
 ---
 
-## 10. Principles
+## 11. Principles
 
 **Command:** `/reversa-principles`
 
@@ -135,7 +151,7 @@ Manages durable project rules in `.reversa/principles.md`, separated from featur
 
 ---
 
-## 11. Resume
+## 12. Resume
 
 **Command:** `/reversa-resume`
 
@@ -158,6 +174,7 @@ Swaps the active feature with one from `paused-features`. Detects the physical s
 /reversa-to-do                   # atomic actions from roadmap.md
 /reversa-audit                   # cross-check between the three docs (read-only)
 /reversa-coding                  # execute actions.md
+/reversa-add <adjustment>        # short amendment on the delivered feature
 /reversa-sync                    # converge the delivered feature into _reversa_sdd/addenda/
 /reversa-principles              # manage durable rules
 /reversa-resume                  # swap with a paused feature
