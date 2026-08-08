@@ -102,6 +102,7 @@ For other workflows, use the matching entry command:
 | Run the same analysis end to end, without intermediate stops | `/reversa-autonomous` |
 | Start a brand new project from a one-line idea | `/reversa-new` (add `expresso` to go all the way to code) |
 | Evolve the system one feature at a time, from spec to code | `/reversa-forward` |
+| Add a short amendment to the feature you just delivered | `/reversa-add` |
 | Converge a delivered feature back into the extraction | `/reversa-sync` |
 | Rebuild the legacy on a modern stack | `/reversa-migrate` |
 | Render the extracted knowledge as an HTML mini-site | `/reversa-docs` |
@@ -149,11 +150,12 @@ For a **greenfield** project (no legacy to extract), start with `/reversa-new` i
 
 ## Agents
 
-Reversa organizes its agents in **nine specialized Teams**. The Discovery Team (Reversa Agents Core) and the Bug Agents are always installed; six Teams are pre-checked in the installer and Translators are opt-in.
+Reversa organizes its agents in **ten specialized Teams**. The Discovery Team (Reversa Agents Core) and the Bug Agents are always installed; seven Teams are pre-checked in the installer and Translators are opt-in.
 
 | Team | Purpose | Entry command |
 |------|---------|---------------|
 | **Reversa Agents Core** (Discovery) | Analyze the existing legacy and produce specs | `/reversa` |
+| **Ideation Agents** | Clarify a raw idea before any development artifact exists, in greenfield or legacy | `/reversa-brainstorm` |
 | **Code New Project Agents** | Start a new project (greenfield) from a one-line idea and produce specs | `/reversa-new` |
 | **Code Forward Agents** | Evolve the system from specs to running code, one feature at a time | `/reversa-forward` |
 | **Migration Agents** | Turn legacy specs into a rebuild plan for a modern stack | `/reversa-migrate` |
@@ -188,6 +190,21 @@ These run the main `/reversa` pipeline.
 | **Reconstructor** | Generates a bottom-up reconstruction plan from the specs and implements one task at a time, preserving tokens. Activation: `/reversa-reconstructor` |
 | **Autonomous** | Runs the same sequence as `/reversa` end to end, with a single interview at the start and no intermediate stops. Activation: `/reversa-autonomous` |
 
+### Ideation Agents (before anything is built)
+
+For the moment when the idea is still raw. Works in **both** scenarios: greenfield, and evolution of an existing legacy. Activate with `/reversa-brainstorm` and the orchestrator drives the pipeline `Framer → Explorer → Challenger → Arbiter → Pre-Spec`, with a `CONTINUAR` checkpoint between agents. Nothing here produces code.
+
+Artifacts live in one folder per session: `_reversa_sdd/brainstorms/<NNN>-<short-name>/`. The active session is tracked in `.reversa/active-ideation.json`. Final handoff goes to `/reversa-new` in greenfield, `/reversa-requirements` in legacy, or `/reversa-migrate` when the intent is a rebuild.
+
+| Agent | Role |
+|-------|------|
+| **Reversa Brainstorm** | Orchestrator. Detects greenfield vs legacy, opens the session folder, routes by physical stage. Writes no pipeline artifact itself |
+| **Framer** | Separates problem from solution and refuses to let a solution pass as a problem. Produces `framing.md` with the job to be done and the cost of doing nothing |
+| **Explorer** | Opens 3 to 5 materially distinct paths, always including "do not build" and "use something off the shelf". Forbidden from recommending. Produces `options.md` |
+| **Challenger** | Premortem, the assumption that kills each option, the cheap test for it, and the hidden cost in the legacy. Adversarial by design. Produces `risks.md` |
+| **Arbiter** | Scores the options against the risks and recommends one with an explicit trade-off. The choice stays human, and a divergence from the recommendation is recorded as such. Produces `decision.md` |
+| **Pre-Spec** | Turns the decision into the minimum package the next pipeline needs: minimum scope, non-goals, done criterion, open `[DOUBT]` markers. Writes no requirements and no architecture. Produces `pre-spec.md` |
+
 ### Code New Project Agents (greenfield)
 
 For projects that do not exist yet. Activate with `/reversa-new` and the orchestrator drives the pipeline `Ideator → Researcher → Drafter → Spec SDD`, with a `CONTINUAR` checkpoint between agents. Final handoff suggests `/reversa-forward` to take the specs to code.
@@ -216,6 +233,7 @@ The bridge from specs to running code. Pipeline: `requirements → clarify → q
 | **To-Do** | Decomposes the roadmap into atomic actions across five phases with stable IDs, dependencies and parallelism markers. Produces `actions.md` |
 | **Audit** | Read-only cross-check between requirements, roadmap and actions. Produces `audit/cross-check.md` |
 | **Coding** | Executes `actions.md`, flips checkboxes, writes `progress.jsonl`, `legacy-impact.md` and `regression-watch.md` |
+| **Add** | Optional and repeatable after coding. Short amendment on the delivered feature: records it in `## Emendas` in `requirements.md`, then implements. Refuses anything needing a new dependency, a schema or contract change, a new public surface, an auth path, or anything outside the active feature's scope. Activation: `/reversa-add` |
 | **Sync** | Optional convergence step after coding. Distills the delivered feature into an addendum in `_reversa_sdd/addenda/`, so the extraction keeps describing the system as it is today until the next full re-extraction. Never edits the original artifacts. Activation: `/reversa-sync` |
 | **Principles** | Manages durable project rules (`principles.md`) and emits impact reports when they change |
 | **Resume** | Swaps the active feature with one from the `paused-features` queue |
@@ -356,6 +374,8 @@ _reversa_forward/
 ```
 
 After `/reversa-coding`, the optional `/reversa-sync` distills the delivered feature into `_reversa_sdd/addenda/<feature-id>-<short-name>.md`. The addendum is a bridge: it keeps the extraction representative of the system as it is today, points at the sections of `architecture.md` and `domain.md` that drifted, and is marked as superseded by the next full re-extraction. Original extraction artifacts are never edited.
+
+Ideation Agents write only inside `_reversa_sdd/brainstorms/` (one folder per session) and `.reversa/active-ideation.json`. They never touch project code and never produce code.
 
 The Documentation Team writes only inside `_reversa_docs/` (HTML mini-site, fully offline).
 

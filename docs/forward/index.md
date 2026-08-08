@@ -45,6 +45,9 @@ You already ran `/reversa` and have specs in `_reversa_sdd/`. Now you want to ev
         │     actions.md  →  code, plus legacy-impact.md
         │                             and regression-watch.md
         ▼
+/reversa-add             (optional, repeatable)
+        │     short amendment  →  spec first, then code
+        ▼
 /reversa-sync            (optional)
               delivery  →  _reversa_sdd/addenda/<feature>.md
 ```
@@ -97,6 +100,7 @@ This means an interrupted session can be resumed safely even if a skill forgot t
 | `reversa-to-do` | to-do | `actions.md` |  |
 | `reversa-audit` | audit | `audit/cross-check.md` | requirements + roadmap + actions |
 | `reversa-coding` | coding | source code, `actions.md` checkboxes, `progress.jsonl`, `legacy-impact.md`, `regression-watch.md` |  |
+| `reversa-add` | add | source code, `## Emendas` in `requirements.md` and `actions.md`, appends to `legacy-impact.md` and `progress.jsonl` | `legacy-impact.md` (scope gate), extraction artifacts |
 | `reversa-sync` | sync | `_reversa_sdd/addenda/<feature>.md` | `legacy-impact.md`, `regression-watch.md`, `requirements.md`, `progress.jsonl`, extraction artifacts |
 | `reversa-principles` | principles | `.reversa/principles.md`, `principles-impact-YYYYMMDD.md` |  |
 | `reversa-resume` | resume | `active-requirements.json` (swap), no feature artifacts |  |
@@ -121,6 +125,9 @@ Read-only cross-check between requirements, roadmap and actions. Findings are re
 
 ### `reversa-coding`
 The executor. Walks `actions.md` phase by phase, respects `[//]` parallelism and dependencies, flips checkboxes from `[ ]` to `[X]` only on success, and appends one line per action to `progress.jsonl`. On completion (full or partial) it writes `legacy-impact.md` (which legacy files were touched) and `regression-watch.md` (invariants that must hold on the next Reversa extraction).
+
+### `reversa-add`
+The amender, optional and repeatable after coding. Records a short adjustment in the active feature's spec and implements it in the same pass, spec first. Two gates run before anything is written: the size gate (no new dependency, no schema or API contract change, no new public surface, nothing in an auth, permission or payment path) and the belonging gate (the request must be about what the active feature delivered). Either gate trips and it points at `/reversa-requirements` without writing a line. Amendments carry IDs `E001`, `E002`, ... and the actions it appends are born closed `[X]`, so `/reversa-sync` never nags about finished work.
 
 ### `reversa-sync`
 The convergence step, optional and run after coding. Between a delivery and the next full `/reversa` re-extraction, `_reversa_sdd/` drifts: the code moved, but `architecture.md` and `domain.md` still describe the previous system. Sync distills the delivered feature into an addendum under `_reversa_sdd/addenda/`, so the extraction keeps representing the system as it is today. It detects the scenario on its own (legacy or greenfield), offers a menu instead of deciding when `actions.md` still has open actions, and never edits the original artifacts, it only points at the sections that drifted. The next full re-extraction marks the addendum as superseded.
@@ -160,7 +167,7 @@ Swaps the active feature with one from `paused-features`. Detects the physical s
             └── cross-check.md          (reversa-audit)
 ```
 
-The Code Forward Agents never touch the legacy code unsupervised; that only happens inside `/reversa-coding`, and even then the skill leaves the two trails above so the next Discovery run can detect any drift.
+The Code Forward Agents never touch the legacy code unsupervised; that only happens inside `/reversa-coding` and `/reversa-add`, and even then both skills leave the trails above so the next Discovery run can detect any drift.
 
 `/reversa-sync` is the only skill in this Team that writes outside `_reversa_forward/`, and it writes to exactly one place:
 
