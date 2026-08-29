@@ -1,6 +1,7 @@
 ---
 name: reversa-highcharts-visualizer
-description: Creates interactive data visualizations with Highcharts.js, generating standalone HTML with animated, responsive, and accessible charts from inline, CSV, or JSON data. Use with "chart", "graph", "dashboard", "highcharts", "data visualization" (lines, bars, pie, heatmap, treemap, sankey, gantt).
+description: Creates interactive data visualizations with Highcharts.js, generating standalone HTML with animated, responsive, and accessible charts from inline, CSV, or JSON data.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

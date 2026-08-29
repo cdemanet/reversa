@@ -1,6 +1,7 @@
 ---
 name: reversa-audit
-description: "Strict reader audit. Compares requirements, roadmap and actions, reports inconsistencies with CRITICAL, HIGH, MEDIUM, LOW severity. NEVER alters the analyzed artifacts. Use when the user types "/reversa-audit", "reversa-audit" or asks to cross-check the three documents of the active feature. Optional step of the forward cycle."
+description: "Strict reader audit. Compares requirements, roadmap and actions, reports inconsistencies with CRITICAL, HIGH, MEDIUM, LOW severity. NEVER alters the analyzed artifacts. Optional step of the forward cycle."
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

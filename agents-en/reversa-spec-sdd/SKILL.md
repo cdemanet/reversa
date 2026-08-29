@@ -1,6 +1,7 @@
 ---
 name: reversa-spec-sdd
-description: 'Final agent of the Code New Project team: decomposes a PRD into components and generates SDD specs per component with a quality score (0 to 100) and gap analysis, reading `_reversa_sdd/prd.md`. Also evaluates existing specs. Hands off to /reversa-forward. Use with "/reversa-spec-sdd" (or via /reversa-new).'
+description: 'Final agent of the Code New Project team: decomposes a PRD into components and generates SDD specs per component with a quality score (0 to 100) and gap analysis, reading `_reversa_sdd/prd.md`. Also evaluates existing specs. Hands off to /reversa-forward.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

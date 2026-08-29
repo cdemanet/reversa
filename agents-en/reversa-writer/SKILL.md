@@ -1,6 +1,7 @@
 ---
 name: reversa-writer
 description: Generates executable specifications of the legacy system as operational contracts, in per-unit folder format with requirements.md, design.md, and tasks.md. Use in the generation phase of a reverse engineering analysis.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

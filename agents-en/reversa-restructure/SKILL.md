@@ -1,6 +1,7 @@
 ---
 name: reversa-restructure
-description: Refactoring of internal structure (method/class) via the Fowler catalog, in small reversible steps, preserving behavior. Does not move modules or change dependencies. Use with "/reversa-restructure", "refactor this function", "this method is huge", "clean this class".
+description: Refactoring of internal structure (method/class) via the Fowler catalog, in small reversible steps, preserving behavior. Does not move modules or change dependencies.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,6 +1,7 @@
 ---
 name: reversa-detective
 description: Extracts implicit business knowledge from the legacy project — business rules, retroactive ADRs via Git, state machines and permissions matrix. Use in the interpretation phase of a reverse engineering analysis.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,6 +1,7 @@
 ---
 name: reversa-pricing-estimate
-description: 'Combines the billing profile and size of the active feature to produce three side-by-side pricing scenarios: Effort, Value, and Market Range. Use when the user types "/reversa-pricing-estimate", "reversa-pricing-estimate", "calculate price", "how much to charge" or "quote feature". Runs after `/reversa-pricing-profile` and `/reversa-pricing-size`.'
+description: 'Combines the billing profile and size of the active feature to produce three side-by-side pricing scenarios: Effort, Value, and Market Range. Runs after `/reversa-pricing-profile` and `/reversa-pricing-size`.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

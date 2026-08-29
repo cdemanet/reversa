@@ -1,6 +1,7 @@
 ---
 name: reversa-decouple
-description: 'Decoupling: reduces direct dependencies (inversion, Feathers seams, cycle breaking), with coupling measured before/after. Does not redistribute modules or touch internal logic. Use with "/reversa-decouple", "reduce coupling", "impossible to test in isolation", "break the dependency", "there is a cycle here".'
+description: 'Decoupling: reduces direct dependencies (inversion, Feathers seams, cycle breaking), with coupling measured before/after. Does not redistribute modules or touch internal logic.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

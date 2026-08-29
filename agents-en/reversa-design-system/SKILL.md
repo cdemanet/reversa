@@ -1,6 +1,7 @@
 ---
 name: reversa-design-system
 description: Extracts and documents the legacy project's design system — color palette, typography, spacing, tokens and components from CSS, theme files and screenshots. Use when style files or interface screenshots are available.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills (screenshots require image support in the model).
 metadata:

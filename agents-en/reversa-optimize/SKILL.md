@@ -1,6 +1,7 @@
 ---
 name: reversa-optimize
-description: 'Performance optimization: reduces time, memory, and resources with before/after measurement, preserving output. Rejects premature optimization. Different from /reversa-simplify (logic clarity). Use with "/reversa-optimize", "this is slow", "reduce memory usage", "improve performance".'
+description: 'Performance optimization: reduces time, memory, and resources with before/after measurement, preserving output. Rejects premature optimization. Different from /reversa-simplify (logic clarity).'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

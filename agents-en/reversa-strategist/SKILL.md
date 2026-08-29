@@ -1,6 +1,7 @@
 ---
 name: reversa-strategist
 description: "Third agent of the Migration Team. Proposes migration strategies with explicit trade-offs, considering brief, paradigm, and appetite. Recommends a strategy but leaves the choice as a human decision. Produces migration_strategy.md, risk_register.md and cutover_plan.md. Activation: /reversa-strategist (generally invoked by /reversa-migrate)."
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

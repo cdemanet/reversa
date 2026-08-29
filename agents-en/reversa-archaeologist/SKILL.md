@@ -1,6 +1,7 @@
 ---
 name: reversa-archaeologist
 description: Deeply analyzes the legacy project's code module by module — extracts algorithms, control flows, data structures and data dictionary. Use in the excavation phase of a reverse engineering analysis, after reversa-scout.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

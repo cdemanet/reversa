@@ -1,6 +1,7 @@
 ---
 name: reversa-modularize
-description: 'Modularization: splits a large snippet into cohesive modules with defined responsibility, respecting the soul boundaries. Does not touch internal logic or invert dependencies. Use with "/reversa-modularize", "break this huge file", "separate responsibilities", "this module does too much".'
+description: 'Modularization: splits a large snippet into cohesive modules with defined responsibility, respecting the soul boundaries. Does not touch internal logic or invert dependencies.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,6 +1,7 @@
 ---
 name: reversa-plan
-description: Outlines the technical approach as a delta on the legacy, generating roadmap, investigation, data-delta, onboarding, and interfaces of the active feature. Use when the user types "/reversa-plan", "reversa-plan", "outline technical plan" or asks to turn requirements into a solution design. Third skill in the forward cycle, after `/reversa-requirements` and (optionally) `/reversa-clarify`.
+description: Outlines the technical approach as a delta on the legacy, generating roadmap, investigation, data-delta, onboarding, and interfaces of the active feature. Third skill in the forward cycle, after `/reversa-requirements` and (optionally) `/reversa-clarify`.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,6 +1,7 @@
 ---
 name: reversa-researcher
-description: Researcher agent of the Code New Project Agents team. From `ideation.md`, deepens the target audience into 1 to 3 structured personas with journeys. Use when the user types "/reversa-researcher", "reversa-researcher" or when invoked by the /reversa-new orchestrator. Produces `_reversa_sdd/personas.md`.
+description: Researcher agent of the Code New Project Agents team. From `ideation.md`, deepens the target audience into 1 to 3 structured personas with journeys. Produces `_reversa_sdd/personas.md`.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -25,6 +25,7 @@ Reversa is a team of specialists. Each agent does one thing — and does it well
 | What do you want to do? | Command | Team |
 |---|---|---|
 | Discover and document a legacy system | `/reversa` | Reversa Agents Core |
+| Clarify the idea before any code | `/reversa-brainstorm` | Ideation Agents |
 | Create a new project from an idea | `/reversa-new` | Code New Project Agents |
 | Implement or evolve code from specs | `/reversa-forward` | Code Forward Agents |
 | Plan the migration of a legacy | `/reversa-migrate` | Migration Agents |
@@ -32,6 +33,25 @@ Reversa is a team of specialists. Each agent does one thing — and does it well
 | Understand which agent to use | `/reversa-agents-help` | Agent guide |
 
 The Pricing and Translators teams have specialized commands. Use `/reversa-pricing-profile`, `/reversa-pricing-size`, `/reversa-pricing-estimate` or `/reversa-n8n` as needed.
+
+---
+
+## 💡 Reversa Brainstorm — the table before construction
+**Command:** `/reversa-brainstorm`
+
+Before the bricklayer raises a wall, someone sits at the table and asks what is wanted from the house: who it is for, what hurts about living in it today, what the possible paths are, what can go wrong. Nobody draws blueprints at this table. It only decides what is worth building.
+
+> Use Reversa Brainstorm when the idea is still raw, in a new project or in legacy. It runs `Framer → Explorer → Challenger → Arbiter → Pre-Spec` and hands the result to `/reversa-new` (greenfield) or to `/reversa-requirements` (legacy).
+
+**The five at the table:**
+
+| Agent | Analogy | Command |
+|---|---|---|
+| **Framer** | The doctor who doesn't accept "I want medicine X" and asks where it hurts | `/reversa-framer` |
+| **Explorer** | The guide who shows all the trails, including the one of not climbing the mountain | `/reversa-explorer` |
+| **Challenger** | The devil's advocate who has seen this project fail before | `/reversa-challenger` |
+| **Arbiter** | The judge who gives the verdict and acknowledges what is lost with it, but you decide | `/reversa-arbiter` |
+| **Pre-Spec** | The scribe who delivers the minimum for the work to start, and nothing more | `/reversa-pre-spec` |
 
 ---
 

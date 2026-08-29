@@ -1,6 +1,7 @@
 ---
 name: reversa-scout
 description: Maps the legacy project's surface — folder structure, languages, frameworks, dependencies, and entry points. Use at the start of a reverse engineering analysis to create the project's initial inventory.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

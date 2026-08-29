@@ -1,6 +1,7 @@
 ---
 name: reversa-data-master
 description: Fully documents the legacy project's database — tables, relationships, constraints, triggers, procedures and complete ERD. Use when DDL, migrations, ORM models or database access are available.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

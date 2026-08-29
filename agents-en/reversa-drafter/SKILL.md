@@ -1,6 +1,7 @@
 ---
 name: reversa-drafter
-description: Drafter agent of the Code New Project Agents team. Synthesizes `ideation.md` and `personas.md` into a complete PRD (problem, metrics, scope, non-goals, constraints, risks). Use when the user types "/reversa-drafter", "reversa-drafter" or when invoked by the /reversa-new orchestrator. Produces `_reversa_sdd/prd.md`.
+description: Drafter agent of the Code New Project Agents team. Synthesizes `ideation.md` and `personas.md` into a complete PRD (problem, metrics, scope, non-goals, constraints, risks). Produces `_reversa_sdd/prd.md`.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

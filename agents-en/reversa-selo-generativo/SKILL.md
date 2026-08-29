@@ -1,6 +1,7 @@
 ---
 name: reversa-selo-generativo
-description: Creates seeded generative visual seals with p5.js, generating standalone HTML with reproducible algorithmic art derived from a hash or string. Use with "seal", "generative seal", "project visual identity", "hero cover", "seeded artwork", "reproducible cover", "documentation seal".
+description: Creates seeded generative visual seals with p5.js, generating standalone HTML with reproducible algorithmic art derived from a hash or string.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

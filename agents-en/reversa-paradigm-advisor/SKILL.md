@@ -1,6 +1,7 @@
 ---
 name: reversa-paradigm-advisor
 description: "First agent of the Migration Team. Detects the legacy system's paradigm from specs, infers the target stack's natural paradigm, warns about gaps, and forces a conscious user decision. Produces paradigm_decision.md, mandatory reading for all subsequent agents. Activation: /reversa-paradigm-advisor (generally invoked by /reversa-migrate)."
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

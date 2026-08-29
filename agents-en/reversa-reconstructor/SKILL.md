@@ -1,6 +1,7 @@
 ---
 name: reversa-reconstructor
 description: "Generates a bottom-up reconstruction plan from Reversa specs and executes each task on demand, one at a time, preserving tokens. Use when you want to reimplement the software from scratch based on the generated specifications. Activation: /reversa-reconstructor"
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

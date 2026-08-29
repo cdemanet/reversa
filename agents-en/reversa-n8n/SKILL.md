@@ -1,6 +1,7 @@
 ---
 name: reversa-n8n
 description: Generates SDD specs (workflow-overview, requirements, design) from N8N workflows exported as JSON, preparing the ground for reimplementation in Python or another language. Use when the user has an N8N-exported JSON file and wants to document it as a spec or port it to code.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

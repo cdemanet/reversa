@@ -1,6 +1,7 @@
 ---
 name: reversa-depth-inspection
-description: 'Deep inspection of the Bugs team: maps spec→code→tests→data of a feature and sweeps with specialized lenses (compliance, data flow, contracts, errors, tests, concurrency) in parallel. Only diagnoses; confirmed findings become bugs. Use with "/reversa-depth-inspection", "deep dive the feature", "deep inspection".'
+description: 'Deep inspection of the Bugs team: maps spec→code→tests→data of a feature and sweeps with specialized lenses (compliance, data flow, contracts, errors, tests, concurrency) in parallel. Only diagnoses; confirmed findings become bugs.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

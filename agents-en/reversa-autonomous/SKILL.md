@@ -95,7 +95,7 @@ After START, save everything in `state.json`, update `phase` to `"recognition"` 
 
 ## Autonomous execution
 
-Run the plan sequentially, one agent at a time, exactly as `reversa` does (inform the agent, activate the skill, save checkpoint, mark ✅ in `plan.md`, brief summary). With these overrides:
+Run the plan sequentially, one agent at a time, exactly as `reversa` does (inform the agent, read its `SKILL.md` and execute in the current context, save checkpoint, mark ✅ in `plan.md`, brief summary). With these overrides:
 
 1. **No intermediate confirmation.** Don't ask "can we start with the Scout?", don't offer the preventive `/clear` + new session checkpoint, don't ask CONTINUE between agents.
 2. **Automatic handoff.** Agent skills finish suggesting the next step and asking "Type CONTINUE". In autonomous mode, the orchestrator is the one who answers: proceed immediately to the next task in the plan, without waiting for the user.

@@ -60,4 +60,4 @@ Consult `references/checkpoint-guide.md` for the rules on writing to state.json.
 
 Ask: "[Name], shall we start with the **Scout** — project mapping?"
 
-After confirmation, activate the `reversa-scout` skill.
+After confirmation, read `reversa-scout/SKILL.md` (sibling folder, in the same skills directory) in full and execute the instructions in the current context.

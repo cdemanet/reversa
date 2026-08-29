@@ -1,6 +1,7 @@
 ---
 name: reversa-standardize
-description: 'Standardization: applies the naming, formatting, and organization conventions of the project dominant pattern (or declared), without changing semantics. Use with "/reversa-standardize", "standardize the code", "fix the style", "inconsistent names", "format the project".'
+description: 'Standardization: applies the naming, formatting, and organization conventions of the project dominant pattern (or declared), without changing semantics.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

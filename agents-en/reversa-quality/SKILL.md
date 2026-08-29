@@ -1,6 +1,7 @@
 ---
 name: reversa-quality
-description: Textual clarity audit of requirements. Verifies if the prose is good enough to generate a plan without ambiguity. Does NOT mix with implementation test auditing. Use when the user types "/reversa-quality", "reversa-quality" or asks to review the quality of requirements before planning. Optional step in the forward cycle.
+description: Textual clarity audit of requirements. Verifies if the prose is good enough to generate a plan without ambiguity. Does NOT mix with implementation test auditing. Optional step in the forward cycle.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

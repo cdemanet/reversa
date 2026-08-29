@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reversa Prune"
+  short_description: "Dead code removal: only removes what proves to be dead..."
+policy:
+  allow_implicit_invocation: false

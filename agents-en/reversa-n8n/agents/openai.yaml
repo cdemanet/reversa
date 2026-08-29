@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reversa N8n"
+  short_description: "Generates SDD specs (workflow-overview, requirements, design) a..."
+policy:
+  allow_implicit_invocation: false

@@ -1,6 +1,7 @@
 ---
 name: reversa-debugger-debate
-description: 'Multi-agent debate of the Bugs team: N solvers in R rounds with an isolated judge, to decide the diagnosis, fix, or spec verdict of a registered bug. Always opt-in, with estimated cost; may include other harnesses (Codex, Gemini CLI). Use with "/reversa-debugger-debate", "open debate on the bug", "debate the fix".'
+description: 'Multi-agent debate of the Bugs team: N solvers in R rounds with an isolated judge, to decide the diagnosis, fix, or spec verdict of a registered bug. Always opt-in, with estimated cost; may include other harnesses (Codex, Gemini CLI).'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

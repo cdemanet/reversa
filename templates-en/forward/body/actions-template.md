@@ -7,6 +7,7 @@ FILLING RULES:
 - Parallelism marker is [//] at the start of the ID line. Tasks marked [//] do not share a target file.
 - The "Dependencies" column lists IDs separated by commas. Actions with no dependency use "-".
 - Initial status is [ ]. /reversa-coding changes it to [X] when complete.
+- /reversa-add adds an "## Amendments" section at the end, with the same table format, IDs E001, E002, ... and status already [X].
 - Every action must be ATOMIC: it fits in a single agent turn, without requiring human feedback mid-way.
 -->
 

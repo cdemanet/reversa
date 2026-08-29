@@ -1,6 +1,7 @@
 ---
 name: reversa-especialista-d3
-description: Senior Data Visualization Engineer specialized in D3.js (v7+). Generates standalone HTML with D3 charts (force-directed, hierarchical, sankey, treemap). Use when the user asks for "module map", "force-directed", "dependency graph 2D", "tree", "sankey", or 2D relationship visualization.
+description: Senior Data Visualization Engineer specialized in D3.js (v7+). Generates standalone HTML with D3 charts (force-directed, hierarchical, sankey, treemap).
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,6 +1,7 @@
 ---
 name: reversa-debugger-fix
-description: 'Reversa bug fixer: reproduces, investigates root cause, offers opt-in debate, creates reproduction and regression tests, applies the change set in two approved gates, gives the spec verdict, and closes per the closure policy. Requires a bug registered via /reversa-debugger. Use with "/reversa-debugger-fix", "fix the bug", "repair BUG-XXX".'
+description: 'Reversa bug fixer: reproduces, investigates root cause, offers opt-in debate, creates reproduction and regression tests, applies the change set in two approved gates, gives the spec verdict, and closes per the closure policy. Requires a bug registered via /reversa-debugger.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

@@ -1,6 +1,7 @@
 ---
 name: reversa-architect
 description: Synthesizes the legacy project analysis into complete architectural documentation — C4 diagrams, complete ERD, integration map and Spec Impact Matrix. Use in the interpretation phase after reversa-detective.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

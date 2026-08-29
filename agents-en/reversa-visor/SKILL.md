@@ -1,6 +1,7 @@
 ---
 name: reversa-visor
 description: Documents the legacy system's interface from screenshots — extracts components, layouts, navigation flows, and screen states. Use when screenshots of the system are available, without the system needing to be running.
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills (requires image support in the model).
 metadata:

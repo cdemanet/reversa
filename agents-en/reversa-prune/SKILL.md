@@ -1,6 +1,7 @@
 ---
 name: reversa-prune
-description: 'Dead code removal: only removes what proves to be dead (no static reference and no dynamic entry), distinguishing dead from suspect orphan and checking against the soul. Reversible by diff. Use with "/reversa-prune", "remove dead code", "there is a function nobody calls", "zombie code".'
+description: 'Dead code removal: only removes what proves to be dead (no static reference and no dynamic entry), distinguishing dead from suspect orphan and checking against the soul. Reversible by diff.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

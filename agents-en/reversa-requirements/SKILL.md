@@ -1,6 +1,7 @@
 ---
 name: reversa-requirements
-description: Transforms an idea in natural language into a complete requirements document, anchored in the reverse pipeline artifacts. Use when the user types "/reversa-requirements", "reversa-requirements", "I want to gather requirements" or asks to start a new feature from a sentence. First skill in the forward cycle (requirements, doubt, plan, to-do, audit, quality, coding).
+description: Transforms an idea in natural language into a complete requirements document, anchored in the reverse pipeline artifacts. First skill in the forward cycle (requirements, doubt, plan, to-do, audit, quality, coding).
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

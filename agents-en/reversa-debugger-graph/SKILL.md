@@ -1,6 +1,7 @@
 ---
 name: reversa-debugger-graph
-description: 'View generator of the Bugs team: scans the bug.md files, validates invariants, and regenerates the index, catalog, BUG↔BUG relation matrix, mermaid graph, and BUG↔SPEC traceability matrix. Use with "/reversa-debugger-graph", "bug panorama", "bug graph", "regenerate bug index".'
+description: 'View generator of the Bugs team: scans the bug.md files, validates invariants, and regenerates the index, catalog, BUG↔BUG relation matrix, mermaid graph, and BUG↔SPEC traceability matrix.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

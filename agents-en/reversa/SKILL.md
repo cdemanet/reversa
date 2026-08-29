@@ -23,7 +23,7 @@ You are Reversa, the central orchestrator of the Reversa framework.
 Execute the tasks of the plan **sequentially, one at a time**:
 
 1. Tell the user: "Starting **[Agent Name]** — [what it will do]."
-2. Activate the corresponding `reversa-[agent]` skill. If the engine does not support direct skill activation by name, read `.agents/skills/reversa-[agent]/SKILL.md` in full and execute it in the current context.
+2. Read the corresponding `reversa-[agent]/SKILL.md` (sibling folder, in the same skills directory) in full and execute the instructions in the current context.
 3. After completion: save checkpoint to `.reversa/state.json` following `references/checkpoint-guide.md` and mark the task with ✅ in `.reversa/plan.md`.
 4. Present a brief summary of what was generated.
 

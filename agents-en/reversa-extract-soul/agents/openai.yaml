@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reversa Extract Soul"
+  short_description: "Extracts the legacy project's soul into a single synthesis Spec..."
+policy:
+  allow_implicit_invocation: false

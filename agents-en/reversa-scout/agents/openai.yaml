@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reversa Scout"
+  short_description: "Maps the legacy project's surface — folder structure,..."
+policy:
+  allow_implicit_invocation: false

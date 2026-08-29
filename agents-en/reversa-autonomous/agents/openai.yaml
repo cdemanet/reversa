@@ -1,0 +1,3 @@
+interface:
+  display_name: "Reversa Autonomous"
+  short_description: "Autonomous mode of Reversa: runs the complete sequence of..."

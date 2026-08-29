@@ -1,6 +1,7 @@
 ---
 name: reversa-sync
-description: 'Reversa post-coding convergence: distills the delivered feature into an addendum in `_reversa_sdd/addenda/`, keeping the extraction representative between re-extractions, without touching the original artifacts. Optional step of the forward cycle after /reversa-coding. Use with "/reversa-sync", "sync specs", "converge the feature in the extraction".'
+description: 'Reversa post-coding convergence: distills the delivered feature into an addendum in `_reversa_sdd/addenda/`, keeping the extraction representative between re-extractions, without touching the original artifacts. Optional step of the forward cycle after /reversa-coding.'
+disable-model-invocation: true
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:

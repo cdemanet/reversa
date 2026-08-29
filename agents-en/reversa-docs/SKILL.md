@@ -130,7 +130,7 @@ After the vendor bundle, run in sequence **Mapper → Analyst → Storyteller �
 
 For each agent in the sequence:
 1. Inform: "Starting the **[Agent]**, [what it will do]."
-2. Activate the corresponding `reversa-docs-<name>` skill. If the engine does not support direct activation, read the agent's `SKILL.md` and execute in the current context passing `.config.json` as input.
+2. Read the `SKILL.md` of the corresponding `reversa-docs-<name>` agent (sibling folder, in the same skills directory) in full and execute in the current context, passing `.config.json` as input.
 3. After completion, update `_reversa_docs/.state.json`: add the agent to the `completedAgents` array, record the generated pages in `pages`, calculate sha256 of each page.
 4. Present summary:
 
