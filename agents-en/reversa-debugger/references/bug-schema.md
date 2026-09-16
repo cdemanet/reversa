@@ -85,7 +85,8 @@ resolution_kind: null        # fixed | duplicate | invalid | cannot-reproduce | 
 ---
 ```
 
-Optional blocks (only when the context exists): `mitigation` (kind, applied_at, temporary),
+Optional blocks (only when the context exists): `express: true` (bug registered through the
+express route of `/reversa-debugger`; activates the fix's express mode), `mitigation` (kind, applied_at, temporary),
 `data_impact` / `data_repair` (cured code is not a cured system), `regression_analysis`
 (last_known_good, first_known_bad, bisect, culprit_commit), `versions` / `backports`,
 `ownership` (inferred from CODEOWNERS, never invented; without evidence use unclassified),

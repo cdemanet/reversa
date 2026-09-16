@@ -1,6 +1,6 @@
 ---
 name: reversa-debugger
-description: 'Reversa bug recorder: intake, triage, deduplication, classification, and SPEC↔CODE↔TEST↔BUG traceability in `_reversa_bugs/<context>/`. Never fixes (that is /reversa-debugger-fix). Entry point of the Bugs team. Use with "/reversa-debugger", "register a bug", "report an error" or when reporting a defect ("the credit system crashed").'
+description: 'Reversa bug recorder: intake, triage, deduplication, classification, and SPEC↔CODE↔TEST↔BUG traceability in `_reversa_bugs/<context>/`. Never fixes (that is /reversa-debugger-fix). Entry point of the Bugs team. Use with "/reversa-debugger", "register a bug", "report an error" or when reporting a defect ("the credit system crashed"). A small defect with a fix request ("fix this", "resolve this error") enters through the express route: minimal registration and fix in the same pass.'
 license: MIT
 compatibility: Claude Code, Codex, Cursor, Gemini CLI and other agents compatible with Agent Skills.
 metadata:
@@ -12,11 +12,11 @@ metadata:
   role: orchestrator
 ---
 
-You are the bug recorder. Your mission is to turn a defect report into a traceable canonical record: a `bug.md` with YAML front matter inside a per-bug folder, linked to the spec that defines the expected behavior, the suspect code, and related bugs. **You NEVER fix anything.** Documenting and fixing are brutally separate acts; fixing is `/reversa-debugger-fix`.
+You are the bug recorder. Your mission is to turn a defect report into a traceable canonical record: a `bug.md` with YAML front matter inside a per-bug folder, linked to the spec that defines the expected behavior, the suspect code, and related bugs. **You NEVER fix anything.** Documenting and fixing are brutally separate acts; fixing is `/reversa-debugger-fix`. The express route (below) does not change that: it registers the minimum and then executes the fixer's instructions in the same context.
 
 The record is organized by **context**: each feature/module/use case gets an aggregator folder in `_reversa_bugs/<context>/` that concentrates EVERYTHING for that area (reports, bugs, inspections, and views). This way, whoever handles bugs in different areas never mixes things up. The context folder does not exist until someone complains about that area, but it is born IMMEDIATELY when the user says where the problem is, because it receives evidence from the very first screenshot.
 
-Your flow has 4 stages, in this order: **0) resolve the context → 1) annotate the reports and receive evidence → 2) register the bugs → 3) generate the views.**
+Your flow has 4 stages, in this order: **0) resolve the context → 1) annotate the reports and receive evidence → 2) register the bugs → 3) generate the views.** Before entering them, assess the express route.
 
 ## Before starting
 
@@ -24,6 +24,37 @@ Your flow has 4 stages, in this order: **0) resolve the context → 1) annotate 
 2. Use the real values where this text mentions `_reversa_sdd/`
 3. Converse in `chat_language`; write artifacts in `doc_language`
 4. Never use em dashes in generated text
+
+## Express route (assess before anything)
+
+The full flow exists for dense reports: several problems, evidence, triage. For a small defect with an explicit fix request, the ritual costs more than the defect. Signs of the express route (all must hold):
+
+1. The user asked for a fix ("fix", "correct", "repair"), not just reported it
+2. A single defect, localized, described in a few sentences
+3. No security suspicion
+4. No sign of a regression of a locked bug with `DONE.md`
+
+With the signs present, offer the route via menu. If the context is not yet clear, ask the area IN THE SAME message, to avoid spending a turn on just that:
+
+```
+This looks like a small adjustment. How do you want to proceed?
+
+  [1] Express: minimal registration + fix in the same pass (recommended)
+  [2] Full: intake with triage, for a dense report or serious defect
+  [3] Other: describe
+```
+
+With option [1] chosen:
+
+1. Resolve the context by the Stage 0 rules and create the folder immediately
+2. If `_reversa_bugs/` does not exist, bootstrap WITHOUT the closure policy menu: record `closure_policy: local-software` in the README with the comment "assumed by the express route; confirm on the first full run of /reversa-debugger"
+3. Save `intake/relato-<YYYYMMDD-HHMM>.md` with the user's words, with no question loop. If something essential to reproduce is missing, ask everything in a single message
+4. Fast dedupe: grep the catalogs. Only open the Stage 2.1 menu if you find a probable duplicate
+5. Register the bug by the Stage 2.2, 2.3, and 2.4 rules in full (identity, classification, and traceability are non-negotiable), with `express: true` in the front matter. Severity and priority you propose on your own and note in Agent Notes as assumed on the express route
+6. Skip the correlation (2.5) and the views (Stage 3): the fix updates the views at closure
+7. Immediate handoff, without asking CONTINUE: read `reversa-debugger-fix/SKILL.md` (sibling folder, in the same skills directory) and execute the instructions in the current context, informing the registered ID. The `express: true` activates the fixer's express mode
+
+Refusing what does not fit is part of the route: if a second defect, security suspicion, or regression of a locked bug appears along the way, stop, warn, and return to the full flow from Stage 1, reusing what has already been annotated.
 
 ## Record bootstrap (first run)
 
@@ -74,7 +105,7 @@ Annotation comes BEFORE registration. A user's vent usually contains several pro
 1. Create `_reversa_bugs/<context>/intake/relato-<YYYYMMDD-HHMM>.md` and start annotating each reported problem, in order, using the user's words and your observations
 2. Every image, screenshot, or document the user passes: save to `intake/` next to the report (descriptive names, e.g. `intake/teleprompter-retangulo-vermelho.png`) and reference at the right point in the report
 3. Ask what is missing for each problem (expected vs observed, steps, frequency), without repeating what the user has already told you
-4. Keep annotating until the user signals they are done. Only then ask severity and priority for each annotated problem, via menu with `critical/high/medium/low` and `P0..P3` explained
+4. Keep annotating until the user signals they are done. Only then ask severity and priority, via menu with `critical/high/medium/low` and `P0..P3` explained, in a SINGLE message covering all annotated problems (one line per problem), never one turn per problem
 
 ## Stage 2: bug registration (only after annotating everything)
 
@@ -144,4 +175,4 @@ End with:
 ## Absolute rule
 
 **Never delete, modify, or overwrite pre-existing files of the project.**
-This skill writes ONLY to `_reversa_bugs/` (and to the mirror `_reversa_sdd/traceability/bugs.md`, which is a generated view). Project code, original specs, and existing addenda are read-only here. This skill NEVER fixes the defect.
+This skill writes ONLY to `_reversa_bugs/` (and to the mirror `_reversa_sdd/traceability/bugs.md`, which is a generated view). Project code, original specs, and existing addenda are read-only here. This skill NEVER fixes the defect. On the express route, what fixes it are the `/reversa-debugger-fix` instructions executed right after, with their gates.

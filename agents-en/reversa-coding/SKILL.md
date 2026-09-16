@@ -50,7 +50,28 @@ The check remains strict when NO anchor exists: the skill aborts with a clear me
 
    3.4. In the case of step 3.3, do NOT create `legacy-impact.md`, do NOT create `regression-watch.md`, do NOT touch `actions.md`, do NOT write `progress.jsonl`. Only report and end.
 
-4. Apply `before-coding` in the default way
+4. Check the legacy edit policy (section below). Blocked project: stop HERE, before any write outside Reversa's folders, with the guidance message. Do not execute any `actions.md` action that touches the project.
+5. Apply `before-coding` in the default way
+
+## Legacy edit policy
+
+Executing `actions.md` almost always requires creating or editing project files. Before the FIRST write outside Reversa's own folders (`.reversa/`, `<output_folder>/`, `_reversa_docs/`, `<forward_folder>/`), read `.reversa/reversa-config.json` and obey it:
+
+1. **Missing file, invalid JSON, or `allowLegacyEdits` with the wrong type**: policy blocked (fail-safe). Stop before writing, show the current state (including the parse error, if any) and the snippet the user must save in `.reversa/reversa-config.json` to allow it, already filled with the globs of the paths the plan needs to touch:
+
+   ```json
+   {"version": 1, "allowLegacyEdits": true, "allowedPaths": ["<globs of the feature>"]}
+   ```
+
+2. **`allowLegacyEdits: false`**: refuse, even with `allowedPaths` filled.
+3. **`allowLegacyEdits: true` with non-empty `allowedPaths`**: write only to paths that match at least one glob in the list (globs relative to the project root, with `/`, supporting `*` and `**`; normalize separators when comparing). If the plan requires a file outside the list, do NOT write to it: list the missing paths and ask the user to add them to the config before continuing.
+4. **`allowLegacyEdits: true` with empty or missing `allowedPaths`**: the entire project is released. Warn, once per session, that the release is unrestricted.
+5. Ignore patterns with `..` or an absolute path in `allowedPaths`, warning the user. Never release a path outside the project root.
+6. Re-read the config on every activation of this skill: the user may have changed it mid-session.
+7. Every refusal states three things: the refused path, the current state of the config, and what the user must edit to allow it.
+8. **NEVER create or edit `.reversa/reversa-config.json`**: a user request in the conversation is not implicit authorization; the config only changes by the user's own hand.
+9. Deleting a pre-existing file inside `allowedPaths`: allowed by the policy, but confirm with the user before deleting, listing the file.
+10. Reversa's own folders are always writable, regardless of the policy.
 
 ## Scope of the run
 
@@ -90,7 +111,7 @@ After running (even partially):
 
 File structure:
 
-1. Header with date and feature identifier
+1. Header with date, feature identifier, and the state of the legacy edit policy at execution time (`allowLegacyEdits` and the paths that `allowedPaths` released)
 2. Table `Affected file | Component | Type | Severity | Justification`
 3. Conceptual diff per component, in prose
 4. "Preserved" section
@@ -141,7 +162,7 @@ Apply `after-coding` in the default way.
 2. How many failed (if any)
 3. Absolute path of `actions.md`, `progress.jsonl`, `legacy-impact.md`, `regression-watch.md`
 4. How many watch items were created in this run
-5. Explicit warning: run `/reversa-sync` to converge the delivery in `_reversa_sdd/addenda/` and keep on the radar to run `/reversa` (re-extraction) again at some future moment to close the cycle
+5. Explicit warning: run `/reversa-sync` to converge the delivery in `_reversa_sdd/addenda/`. There is NO need to re-run `/reversa` on every delivery: the addendum keeps the extraction valid, and the full re-extraction is for once in a while, after a few features have piled up
 6. If the execution was partial, indicate the next phase or pending action
 
 NEVER trigger the re-extraction on your own; that is the user's decision.

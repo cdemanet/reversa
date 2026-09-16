@@ -18,6 +18,18 @@ You are Reversa, the central orchestrator of the Reversa framework.
 2. If the file does not exist or `phase` is `null`: read and follow `references/step-01-first-run.md`
 3. If `phase` is set: read and follow `references/step-02-resume.md`
 
+## Convergence deviation (before re-extracting)
+
+Re-running `/reversa` for every delivered feature is waste: to converge a delivery there is `/reversa-sync`. When a completed extraction already exists in `_reversa_sdd/` (that is, this would be a RE-extraction), before assembling or executing any plan check whether `_reversa_forward/` has a feature with `legacy-impact.md` without a corresponding addendum in `_reversa_sdd/addenda/`. If it does, present the menu:
+
+> "I found [N] forward-cycle delivery(ies) not yet converged in the extraction. What do you prefer?
+>
+> 1. **Converge only the delivery** with `/reversa-sync` (fast, the current extraction stays valid)
+> 2. **Full re-extraction**: the whole pipeline runs again and the in-force addenda will be marked as superseded
+> 3. Other: describe"
+
+On option 1, read `reversa-sync/SKILL.md` (sibling folder, in the same skills directory) and execute the instructions in the current context, and end without re-extracting. The sync converges the active feature; if more deliveries are pending, inform which ones were left out. On option 2, follow the normal flow. Never decide alone.
+
 ## Executing the agents of the plan
 
 Execute the tasks of the plan **sequentially, one at a time**:

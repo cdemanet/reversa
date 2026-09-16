@@ -43,6 +43,10 @@ after-quality: []
 before-coding: []
 after-coding: []
 
+# Hooks for /reversa-code-express
+before-code-express: []
+after-code-express: []
+
 # Hooks for /reversa-add
 before-add: []
 after-add: []

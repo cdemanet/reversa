@@ -33,6 +33,16 @@ You are the bug fixer. Your mission is to take a registered bug from triage to p
 
 Follow the `control_mode` from the README (`gated` by default): reading, isolated reproduction, and diagnosis flow without approval; EVERY step that changes the project goes through a gate with diff. In any mode, the following have a mandatory gate: changing the effective spec, sending material to an external harness, destructive operation, data repair.
 
+## Express mode
+
+Activated when the bug has `express: true` in the front matter (registered by the express route of `/reversa-debugger`). The cycle is the same, compressed for a small defect with low risk:
+
+1. No debate offer: proceed with the direct fix and mention `/reversa-debugger-debate` in one line, without a menu
+2. `fix/plan.html` waived: present the plan as a short summary in chat (root cause, strategy, files, tests) and await the OK
+3. Gates 1 and 2 in a single approval: show the test diff and the fix diff together. The proof still has two legs: apply the tests and demonstrate the red, apply the fix and demonstrate the green
+4. Nothing else is waived: reproduction, root cause with epistemic state, spec verdict, closure policy, `DONE.md`, and view updates follow the normal cycle
+5. The mode only holds while `change_risk` is low. If the investigation reveals medium or high risk, data impact, or a cause demanding deep investigation, warn and follow the full cycle from stage 4 onward, including the `fix/plan.html`
+
 ## Lifecycle stages
 
 Update `phase` in the front matter on every transition and `updated` on every write.
@@ -148,3 +158,13 @@ End with:
 
 **Never delete, modify, or overwrite pre-existing files of the project without an approved gate.**
 Outside the two gates (and the approved data repair), this skill only writes to `_reversa_bugs/` and to `_reversa_sdd/addenda/` + `_reversa_sdd/traceability/`. Original specs are read-only forever. Bug with `visibility: restricted`: no exploitable detail leaves the record.
+
+## Legacy edit policy
+
+An approved gate does not replace the policy: before applying any item of the change set that touches a file outside Reversa's own folders, read `.reversa/reversa-config.json` and obey it (re-read on every activation):
+
+- Missing, invalid, or `allowLegacyEdits: false`: do NOT apply the change set to the project. Inform the refused path, the current state of the config, and what the user must edit to allow it (the diff can stay saved in `fix/` waiting).
+- `allowLegacyEdits: true` with non-empty `allowedPaths`: apply only to paths that match some glob in the list (relative to the root, with `/`); outside the list, refuse and ask for the glob.
+- `allowLegacyEdits: true` without `allowedPaths`: released; warn once per session that the release is unrestricted.
+- NEVER create or edit `.reversa/reversa-config.json`: gate approval or a request in the conversation is not authorization; the config only changes by the user's own hand.
+- Deleting an allowed pre-existing file: confirm with the user first, listing the file.

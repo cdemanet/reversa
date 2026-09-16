@@ -98,3 +98,15 @@ End with:
 
 **Never delete, modify, or overwrite pre-existing files of the project.**
 This skill writes ONLY to `_reversa_refactor/`. Project code, specs, and soul are read-only here. This skill NEVER applies a transformation: it inventories, prioritizes, and routes.
+
+## Legacy edit policy
+
+The transformation the specialist will apply touches project code, and an approved gate does not replace the policy. Before any write outside Reversa's own folders (yours or a specialist's routed by you), read `.reversa/reversa-config.json` and obey it (re-read on every activation):
+
+- Missing, invalid, or `allowLegacyEdits: false`: refuse the write, informing the refused path, the current state of the config, and what the user must edit to allow it.
+- `allowLegacyEdits: true` with non-empty `allowedPaths`: write only to paths that match some glob in the list (relative to the root, with `/`); outside the list, refuse and ask for the glob.
+- `allowLegacyEdits: true` without `allowedPaths`: released; warn once per session that the release is unrestricted.
+- NEVER create or edit `.reversa/reversa-config.json`: a request in the conversation is not authorization; the config only changes by the user's own hand.
+- Deleting an allowed pre-existing file: confirm with the user first, listing the file.
+
+When routing an opportunity whose target is outside the allowed paths, warn the user in the menu: the specialist will lock at the gate until the config allows the path.

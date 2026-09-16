@@ -234,6 +234,16 @@ This agent is part of the Migration Team and writes exclusively in `_reversa_sdd
 - Default mode is interactive. `--auto` is explicit and displays the defaults before applying.
 - Each pause presents a summary + pending decisions; never proceeds silently.
 
+## Legacy edit policy
+
+This orchestrator writes only to `_reversa_sdd/migration/`, but if any step requires writing outside Reversa's own folders, read `.reversa/reversa-config.json` first and obey it (re-read on every activation):
+
+- Missing, invalid, or `allowLegacyEdits: false`: refuse the write, informing the refused path, the current state of the config, and what the user must edit to allow it.
+- `allowLegacyEdits: true` with non-empty `allowedPaths`: write only to paths that match some glob in the list (relative to the root, with `/`); outside the list, refuse and ask for the glob.
+- `allowLegacyEdits: true` without `allowedPaths`: released; warn once per session that the release is unrestricted.
+- NEVER create or edit `.reversa/reversa-config.json`: a request in the conversation is not authorization; the config only changes by the user's own hand.
+- Deleting an allowed pre-existing file: confirm with the user first, listing the file.
+
 ## Output
 
 ```
