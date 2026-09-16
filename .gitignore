@@ -7,3 +7,9 @@ site/
 .npm-cache/
 .tmp-mkdocs-site/
 specs/
+pi-session*.html
+session*.md
+.atl/
+.codegraph/
+agents_en_v0/
+skills/

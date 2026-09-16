@@ -16,7 +16,6 @@ const commands = {
   update:             () => import('../lib/commands/update.js'),
   status:             () => import('../lib/commands/status.js'),
   uninstall:          () => import('../lib/commands/uninstall.js'),
-  'add-agent':        () => import('../lib/commands/add-agent.js'),
   'add-engine':       () => import('../lib/commands/add-engine.js'),
   'export-diagrams':  () => import('../lib/commands/export-diagrams.js'),
 };
@@ -30,11 +29,10 @@ if (!command || command === '--help' || command === '-h') {
   Usage: npx reversa <command>
 
   Commands:
-    install            Installs Reversa in the current project
-    update             Updates agents to the latest version
+    install            Installs Reversa in the current project (all agents)
+    update             Updates agents to the latest version (all agents)
     status             Shows the current analysis status
     uninstall          Removes Reversa from the project
-    add-agent          Adds an agent to the project
     add-engine         Adds support for an engine
     export-diagrams    Exports Mermaid diagrams as SVG/PNG images
                        Options: --format=svg|png  --output=<folder>

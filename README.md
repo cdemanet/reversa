@@ -407,6 +407,7 @@ Every statement in the specs is marked with:
 | Antigravity | `AGENTS.md` | `.agents/skills/reversa-*/` | `/reversa` |
 | Kiro | (none) | `.kiro/skills/reversa-*/` and `.agents/skills/reversa-*/` | `/reversa` |
 | Opencode | `AGENTS.md` | `.agents/skills/reversa-*/` | `reversa` |
+| Hermes | `AGENTS.md` | `.agents/skills/reversa-*/` | `reversa` |
 | Cline | `.clinerules` | `.agents/skills/reversa-*/` | `/reversa` |
 | Roo Code | `.roorules` | `.agents/skills/reversa-*/` | `/reversa` |
 | GitHub Copilot | `.github/copilot-instructions.md` | `.agents/skills/reversa-*/` | `/reversa` |
@@ -419,10 +420,9 @@ Every statement in the specs is marked with:
 ## CLI commands
 
 ```bash
-npx reversa install      # Install Reversa in the project
+npx reversa install      # Install Reversa in the project (all agents)
 npx reversa status       # Show current analysis state
-npx reversa update       # Update agents to the latest version
-npx reversa add-agent    # Add an agent to the project
+npx reversa update       # Update everything to the latest version (all agents)
 npx reversa add-engine   # Add support for a new engine
 npx reversa uninstall    # Remove Reversa from the project
 ```

@@ -10,8 +10,9 @@
 import { cpSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = new URL('..', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const SKILL = 'reversa-scout'; // user-invoked representativo
 const src = join(ROOT, 'agents', SKILL);
 
