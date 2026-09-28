@@ -102,6 +102,7 @@ For other workflows, use the matching entry command:
 | Run the same analysis end to end, without intermediate stops | `/reversa-autonomous` |
 | Start a brand new project from a one-line idea | `/reversa-new` (add `expresso` to go all the way to code) |
 | Evolve the system one feature at a time, from spec to code | `/reversa-forward` |
+| Implement a queue of features (e.g. features 10 to 20) end to end, without stops | `/reversa-forward-autonomous` |
 | Add a short amendment to the feature you just delivered | `/reversa-add` |
 | Converge a delivered feature back into the extraction | `/reversa-sync` |
 | Rebuild the legacy on a modern stack | `/reversa-migrate` |
@@ -113,12 +114,13 @@ Each orchestrator pauses between agents and asks for `CONTINUAR` before advancin
 
 ### Unattended runs
 
-Two commands concentrate every question in a **single interview at the start** and then run without stopping, for sessions where nobody is watching the terminal (Claude Code YOLO mode or equivalent):
+Three commands concentrate every question in a **single interview at the start** and then run without stopping, for sessions where nobody is watching the terminal (Claude Code YOLO mode or equivalent):
 
 - `/reversa-autonomous` — the full Discovery pipeline, same agents and same checkpoints as `/reversa`.
 - `/reversa-new expresso "<your idea>"` — greenfield from the idea all the way to implemented code, chaining into the forward cycle after the specs.
+- `/reversa-forward-autonomous` (new in 1.3.4): the forward cycle over a queue of features, from requirements to sync, one feature after another. It is the one to use with `/goal`, e.g. `/goal run /reversa-forward-autonomous on features 10 to 20, use the defaults`. It writes project code only through the coding phase and only where `.reversa/reversa-config.json` allows; with the policy blocked it stops before starting.
 
-Both keep the non-destructive rule intact: writes stay inside `.reversa/` and the output folders, and no destructive or outward-facing command (delete, `git push`, publish, install) is ever run on its own. Doubts that come up along the way are recorded with the 🟡 seal instead of interrupting the flow.
+The first two keep the non-destructive rule intact: writes stay inside `.reversa/` and the output folders, and no destructive or outward-facing command (delete, `git push`, publish, install) is ever run on its own. `/reversa-forward-autonomous` is the exception by design: its coding phase edits project code, only where `.reversa/reversa-config.json` allows, and runs the builds, tests and installs that `actions.md` explicitly asks for. Doubts that come up along the way are recorded with the 🟡 seal instead of interrupting the flow.
 
 ---
 

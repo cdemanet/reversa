@@ -30,6 +30,7 @@ That's it. Reversa takes control and coordinates the entire analysis from there.
 | Same analysis, end to end, with no intermediate stops | `/reversa-autonomous` |
 | Start a brand new project from a one-line idea | `/reversa-new` (add `expresso` to go all the way to code) |
 | Evolve the system one feature at a time, spec to code | `/reversa-forward` |
+| Implement a queue of features (e.g. features 10 to 20) end to end, with no stops | `/reversa-forward-autonomous` |
 | Add a short amendment to the feature you just delivered | `/reversa-add` |
 | Converge a delivered feature back into the extraction | `/reversa-sync` |
 | Rebuild the legacy on a modern stack | `/reversa-migrate` |
@@ -52,8 +53,10 @@ It runs the exact same agents and phases as `/reversa`, but concentrates every q
 
 The same idea exists on the greenfield side: `/reversa-new expresso "<your idea>"` goes from the idea to implemented code without stopping, chaining into the forward cycle once the specs are done.
 
+To evolve a system that already has specs, `/reversa-forward-autonomous` runs the forward cycle over a queue of features (e.g. "features 10 to 20"), from requirements to sync, one after another. It is the command to use with `/goal`, for example `/goal run /reversa-forward-autonomous on features 10 to 20, use the defaults`. It writes project code only in the coding phase and only where `.reversa/reversa-config.json` allows; with the policy blocked, it stops before starting.
+
 !!! warning "Made for sessions with automatic approval"
-    These modes are meant for environments where tools are auto-approved (Claude Code YOLO mode or equivalent). Since nobody is approving each action, the guardrails are stricter: writes stay inside `.reversa/` and the output folders, and no destructive or outward-facing command (delete, `git push`, publish, install dependencies) is ever run on its own. Even so, back up your project before starting, as recommended on the [home page](index.md).
+    These modes are meant for environments where tools are auto-approved (Claude Code YOLO mode or equivalent). Since nobody is approving each action, the guardrails are stricter: writes stay inside `.reversa/` and the output folders, and no destructive or outward-facing command (delete, `git push`, publish, install dependencies) is ever run on its own. Even so, back up your project before starting, as recommended on the [home page](index.md). `/reversa-forward-autonomous` is the exception: its coding phase edits project code, only where `.reversa/reversa-config.json` allows, and runs the builds, tests and installs that `actions.md` explicitly asks for.
 
 ---
 

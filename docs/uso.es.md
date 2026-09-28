@@ -30,6 +30,7 @@ Eso es todo. Reversa toma el control y coordina todo el análisis desde ahí.
 | El mismo análisis, de punta a punta, sin paradas intermedias | `/reversa-autonomous` |
 | Empezar un proyecto nuevo desde una idea en una línea | `/reversa-new` (con `expresso` llega hasta el código) |
 | Evolucionar el sistema una feature a la vez, de la spec al código | `/reversa-forward` |
+| Implementar una cola de features (ej. features 10 a 20) de punta a punta, sin paradas | `/reversa-forward-autonomous` |
 | Enmendar un ajuste corto en la feature recién entregada | `/reversa-add` |
 | Converger una feature entregada de vuelta en la extracción | `/reversa-sync` |
 | Reconstruir el legado en un stack moderno | `/reversa-migrate` |
@@ -52,8 +53,10 @@ Ejecuta exactamente los mismos agentes y fases que `/reversa`, pero concentra to
 
 La misma idea existe del lado greenfield: `/reversa-new expresso "<tu idea>"` va de la idea al código implementado sin parar, encadenando con el ciclo forward en cuanto las specs están listas.
 
+Para evolucionar un sistema que ya tiene specs, `/reversa-forward-autonomous` ejecuta el ciclo forward sobre una cola de features (ej. "features 10 a 20"), de requirements a sync, una tras otra. Es el comando para usar con `/goal`, por ejemplo `/goal ejecuta /reversa-forward-autonomous en las features 10 a 20, usa los valores por defecto`. Escribe código del proyecto solo en la fase coding y solo donde `.reversa/reversa-config.json` lo permita; con la política bloqueada, se detiene antes de empezar.
+
 !!! warning "Hecho para sesiones con aprobación automática"
-    Estos modos son para entornos donde las herramientas se aprueban automáticamente (modo YOLO de Claude Code o equivalente). Como nadie está aprobando cada acción, las barreras son más estrictas: la escritura queda restringida a `.reversa/` y las carpetas de salida, y ningún comando destructivo o de efecto externo (borrar, `git push`, publicar, instalar dependencias) se ejecuta por cuenta propia. Aun así, haz backup del proyecto antes de empezar, como se recomienda en la [página inicial](index.md).
+    Estos modos son para entornos donde las herramientas se aprueban automáticamente (modo YOLO de Claude Code o equivalente). Como nadie está aprobando cada acción, las barreras son más estrictas: la escritura queda restringida a `.reversa/` y las carpetas de salida, y ningún comando destructivo o de efecto externo (borrar, `git push`, publicar, instalar dependencias) se ejecuta por cuenta propia. Aun así, haz backup del proyecto antes de empezar, como se recomienda en la [página inicial](index.md). `/reversa-forward-autonomous` es la excepción: su fase coding edita código del proyecto, solo donde `.reversa/reversa-config.json` lo permita, y ejecuta los builds, tests e instalaciones que `actions.md` pida explícitamente.
 
 ---
 
