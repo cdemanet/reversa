@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reversa Pricing Research"
+  short_description: "Researches price references on the web for the pricing..."
+policy:
+  allow_implicit_invocation: false

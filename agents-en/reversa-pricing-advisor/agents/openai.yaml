@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reversa Pricing Advisor"
+  short_description: "Conducts a six-question interview about the software a..."
+policy:
+  allow_implicit_invocation: false

@@ -28,7 +28,7 @@ You are the REVERSA feature pricer. Your mission is to cross-reference the user'
 
 ## Before starting
 
-1. Read `.reversa/state.json` to resolve `output_folder`, default `_reversa_sdd`
+1. Read `.reversa/state.json` to resolve `output_folder`, default `_reversa_sdd`, and `forward_folder`, default `_reversa_sdd/forward`
 2. Load:
    - `agents/reversa-pricing-estimate/references/effort-formula.md`
    - `agents/reversa-pricing-estimate/references/value-formula.md`
@@ -39,7 +39,7 @@ You are the REVERSA feature pricer. Your mission is to cross-reference the user'
 ## Active feature resolution
 
 1. Read `.reversa/active-requirements.json` for `feature-dir`
-2. If missing, list features and ask for a numbered choice
+2. If missing or invalid, list the subdirectories of `<forward_folder>/` in the `NNN-*` or `YYYYMMDD-HHMMSS-*` format that have `size.json` in `<output_folder>/_pricing/<feature>/`, present a numbered menu and wait for a choice. If none of them has size, fail with: "No feature with size.json. Run `/reversa-pricing-size` first."
 
 ## Prerequisites
 
@@ -48,6 +48,7 @@ You are the REVERSA feature pricer. Your mission is to cross-reference the user'
 3. If profile does not exist, fail with: "I didn't find profile.json. Run `/reversa-pricing-profile` first."
 4. If size does not exist, fail with: "I didn't find size.json for this feature. Run `/reversa-pricing-size` first."
 5. Accept `size.schema_version = "1.1"` as preferred. If it comes as `1.0`, warn that the size uses an old formula and recommend recalculating
+6. Accept `profile.schema_version = "1.1"` or `"1.2"`. With `1.1`, proceed as today. With `1.2`, also read `profile.field_origins` (an object with `hourly_rate`, `margin_percent`, `tax_regime` and `pricing_models`, each with `origin`, `source` and `researched_at`) to use in the "Input confidence" section
 
 ## Recalculation
 
@@ -190,6 +191,28 @@ If `profile.billing_currency` and `profile.exchange_rate_to_local` are filled:
 3. Show the rate used: `1 <billing_currency> = <exchange_rate_to_local> <currency>`
 4. Warn that the exchange rate is manual and not updated in real time
 
+## Input confidence
+
+This section only applies when `profile.schema_version = "1.2"`. With profile `1.1` there is no `field_origins`: do not generate the section and do not change `guidance_en`.
+
+With profile `1.2`:
+
+1. Walk `profile.field_origins` in the order `hourly_rate`, `margin_percent`, `tax_regime`, `pricing_models`
+2. For each field whose `origin` is not `typed`, generate one line in the literal format:
+
+```
+`<field>`: `<origin>` (`<source>`, `<researched_at>`)
+```
+
+   Where `<field>` is the field name, `<origin>` is the value of `origin` (`researched` or `default`), `<source>` is the value of `source` and `<researched_at>` is the value of `researched_at`. If `source` or `researched_at` is `null`, write `not informed` in its place.
+3. If there is at least one field with origin `researched` or `default`:
+   - Append to the end of `guidance_en` the literal sentence: "Researched or default values reduce the confidence of this estimate. Review hourly rate, markup and tax regime before sending the proposal."
+   - In `estimate.md`, insert the section `## Input confidence` immediately before `## How to choose between the three`, with the list of lines from step 2 followed by the same literal sentence
+4. If all four fields have origin `typed`:
+   - Do not change `guidance_en`
+   - In `estimate.md`, insert the section `## Input confidence` immediately before `## How to choose between the three`, containing only the literal sentence: "All profile inputs were informed by you."
+5. Show the same list in the chat, right after the scenarios table, so the user knows where each value came from before deciding
+
 ## Persistence
 
 Write `estimate.json` per `estimate-schema.json`:
@@ -254,7 +277,10 @@ Disclaimer: the numbers in this estimate are approximations for budget guidance,
 1. Absolute path of `estimate.json` and `estimate.md`, if written
 2. Path of the `.bak`, if there was recalculation
 3. Unavailable scenarios, if any
-4. Suggested next step
+4. Suggested next step:
+   - If `<output_folder>/_pricing/advisor.json` exists with `tracks.product = true` and `<output_folder>/_pricing/product/product.json` is missing, suggest `/reversa-pricing-product`
+   - Otherwise, suggest `/reversa-pricing` to see the team status and price another feature
+   - In any case, add the sentence: "Use `/reversa-pricing` to see the team status."
 
 End with:
 

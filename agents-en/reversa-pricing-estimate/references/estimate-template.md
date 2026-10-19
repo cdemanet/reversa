@@ -104,6 +104,22 @@ This is the Markdown template that the `reversa-pricing-estimate` agent uses to 
 
 </if>
 
+## Input confidence
+
+<section generated only when profile.schema_version == "1.2"; with profile 1.1, omit the whole section>
+
+<if there is an origin other than typed, one line per field, in this literal format>
+
+- `<field>`: `<origin>` (`<source or "not informed">`, `<researched_at or "not informed">`)
+
+Researched or default values reduce the confidence of this estimate. Review hourly rate, markup and tax regime before sending the proposal.
+
+<if all fields are typed>
+
+All profile inputs were informed by you.
+
+</if>
+
 ## How to choose between the three
 
 <guidance_en_based_on_scenarios>

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reversa Pricing Product"
+  short_description: "Breakeven calculator to sell the software as a product..."
+policy:
+  allow_implicit_invocation: false
