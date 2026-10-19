@@ -17,9 +17,10 @@
 | Implementar o evolucionar código desde las specs | `/reversa-forward` | Code Forward Agents |
 | Planificar la migración de un legado | `/reversa-migrate` | Migration Agents |
 | Generar un mini-sitio visual de documentación | `/reversa-docs` | Documentation Agents |
+| Descubrir cómo vender y cuánto cobrar por el software o por una feature | `/reversa-pricing` | Pricing and Size Agents |
 | Elegir el agente adecuado | `/reversa-agents-help` | Guía de agentes |
 
-Pricing y Translators usan comandos especializados: `/reversa-pricing-profile`, `/reversa-pricing-size`, `/reversa-pricing-estimate` y `/reversa-n8n`.
+El equipo de Pricing entra por `/reversa-pricing`. Translators usan `/reversa-n8n`.
 
 ---
 
@@ -111,12 +112,33 @@ El estilista cataloga el guardarropa: paleta de colores, tipografía, espaciados
 
 ---
 
+## 💰 Reversa Pricing: el consultor de precios
+**Comando:** `/reversa-pricing`
+
+Un buen consultor de precios no empieza por el número. Antes pregunta cómo quieres vender: por encargo para un cliente, como licencia, alquiler, suscripción o en una tienda de apps. Solo después de conocer el modelo llama a cada especialista: quien investiga el mercado, quien anota cómo cobras, quien mide la obra, quien arma el presupuesto y quien calcula cuántos clientes pagan la cuenta. Al final nunca recibes un número solo: recibes rangos, escenarios y lo que cada precio exige.
+
+> Usa Reversa Pricing cuando quieras saber cuánto cobrar por el software o por una feature, seas principiante o experimentado. Detecta dónde te quedaste en `_pricing/` y conduce `Advisor → Profile → Product` (producto) o `Size → Estimate` (servicio, por feature). Research entra cuando prefieres investigar en vez de informar.
+
+**Los seis especialistas:**
+
+| Agente | Analogía | Comando |
+|---|---|---|
+| **Advisor** | El consultor que pregunta cómo quieres vender antes de hablar de números | `/reversa-pricing-advisor` |
+| **Research** | El investigador que va al mercado y vuelve con rango, fuente y fecha | `/reversa-pricing-research` |
+| **Profile** | El contador que anota cómo cobras, o investiga por ti | `/reversa-pricing-profile` |
+| **Size** | El ingeniero que mide la obra por el plano, no por el ladrillo | `/reversa-pricing-size` |
+| **Estimate** | El presupuestador que entrega tres escenarios, nunca un número solo | `/reversa-pricing-estimate` |
+| **Product** | El planificador que dice cuántos clientes pagan la cuenta en cada precio | `/reversa-pricing-product` |
+
+---
+
 ## Secuencia recomendada
 
 ```
 Proyecto heredado: /reversa → descubrimiento y especificaciones
 Proyecto nuevo:    /reversa-new → PRD y specs → /reversa-forward
 Migración:         /reversa → /reversa-migrate → /reversa-forward
+Poner precio:      /reversa-pricing → advisor → profile → product | size → estimate
 
 Pipeline heredado manual:
 Scout → Archaeologist (N sesiones) → Detective → Architect → Writer → Reviewer

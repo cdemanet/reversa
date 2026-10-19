@@ -37,7 +37,7 @@ That's it. Reversa takes control and coordinates the entire analysis from there.
 | Improve the internal structure without changing observable behavior | `/reversa-refactor` |
 | Render the extracted knowledge as an HTML mini-site | `/reversa-docs` |
 | Register and fix defects with causal traceability | `/reversa-debugger`, `/reversa-debugger-fix` |
-| Estimate effort, size and price from the specs | `/reversa-pricing-profile`, `/reversa-pricing-size`, `/reversa-pricing-estimate` |
+| Decide how to sell and price the product or each feature | `/reversa-pricing` |
 
 ---
 

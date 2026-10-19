@@ -108,7 +108,7 @@ For other workflows, use the matching entry command:
 | Rebuild the legacy on a modern stack | `/reversa-migrate` |
 | Render the extracted knowledge as an HTML mini-site | `/reversa-docs` |
 | Track and fix defects with causal traceability | `/reversa-debugger`, `/reversa-debugger-fix` |
-| Estimate effort and pricing on top of the specs | `/reversa-pricing-profile`, `/reversa-pricing-size`, `/reversa-pricing-estimate` |
+| Price your software or a feature: sale model, billing profile, size and three scenarios | `/reversa-pricing` |
 
 Each orchestrator pauses between agents and asks for `CONTINUAR` before advancing, so you stay in control of every step.
 
@@ -161,7 +161,7 @@ Reversa organizes its agents in **ten specialized Teams**. The Discovery Team (R
 | **Code New Project Agents** | Start a new project (greenfield) from a one-line idea and produce specs | `/reversa-new` |
 | **Code Forward Agents** | Evolve the system from specs to running code, one feature at a time | `/reversa-forward` |
 | **Migration Agents** | Turn legacy specs into a rebuild plan for a modern stack | `/reversa-migrate` |
-| **Pricing and Size Agents** | Estimate effort, size and pricing on top of the specs | `/reversa-pricing-*` |
+| **Pricing and Size Agents** | Decide how to sell, then price the product or each feature on top of the specs | `/reversa-pricing` |
 | **Documentation Team** | Render the extracted knowledge as a self-contained HTML mini-site | `/reversa-docs` |
 | **Bug Agents** | Track, debate and fix defects with causal traceability to the specs | `/reversa-debugger` |
 | **Code Quality Agents** | Improve existing code without changing behavior: refactor, optimize, standardize, prune dead code | `/reversa-refactor` |
@@ -255,7 +255,7 @@ Use after `/reversa` when the goal is to rebuild the legacy on a modern stack. A
 
 ### Pricing and Size Team
 
-Three agents on top of the specs to estimate effort, size and price. Activate with `/reversa-pricing-profile`, `/reversa-pricing-size` and `/reversa-pricing-estimate`.
+Seven agents led by `/reversa-pricing`: Advisor (sale model), Research (web references with sources), Profile (billing profile, with an 'I know' and a 'research for me' mode), Size and Estimate (per feature: three scenarios), Product (break-even calculator for licenses, rentals, subscriptions and app stores). Only Research touches the web.
 
 ### Translators (input adapters)
 

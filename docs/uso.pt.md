@@ -37,7 +37,7 @@ O `/reversa` é o ponto de entrada para analisar um sistema existente, mas não 
 | Melhorar a estrutura interna sem mudar o comportamento observável | `/reversa-refactor` |
 | Renderizar o conhecimento extraído como mini-site HTML | `/reversa-docs` |
 | Registrar e corrigir defeitos com rastreabilidade causal | `/reversa-debugger`, `/reversa-debugger-fix` |
-| Estimar esforço, tamanho e preço a partir das specs | `/reversa-pricing-profile`, `/reversa-pricing-size`, `/reversa-pricing-estimate` |
+| Decidir como vender e precificar o produto ou cada feature | `/reversa-pricing` |
 
 ---
 

@@ -19,9 +19,10 @@ It explains each agent with a real-world analogy. But since you're already here,
 | Implement or evolve code from specs | `/reversa-forward` | Code Forward Agents |
 | Plan a legacy migration | `/reversa-migrate` | Migration Agents |
 | Generate a visual documentation mini-site | `/reversa-docs` | Documentation Agents |
+| Find out how to sell and how much to charge for the software or a feature | `/reversa-pricing` | Pricing and Size Agents |
 | Choose the right agent | `/reversa-agents-help` | Agent guide |
 
-Pricing and Translators use specialized commands: `/reversa-pricing-profile`, `/reversa-pricing-size`, `/reversa-pricing-estimate` and `/reversa-n8n`.
+The Pricing team enters through `/reversa-pricing`. Translators use `/reversa-n8n`.
 
 ---
 
@@ -113,12 +114,33 @@ The stylist catalogs the wardrobe: color palette, typography, spacing, design to
 
 ---
 
+## 💰 Reversa Pricing: the pricing consultant
+**Command:** `/reversa-pricing`
+
+A good pricing consultant doesn't start with a number. First they ask how you want to sell: custom work for a client, a license, a rental, a subscription or an app store. Only after knowing the model do they call each specialist: the one who researches the market, the one who records how you charge, the one who measures the job, the one who builds the quote and the one who calculates how many customers pay the bill. In the end you never get a single number: you get ranges, scenarios and what each price demands.
+
+> Use Reversa Pricing when you want to know how much to charge for the software or for a feature, whether you are a beginner or experienced. It detects where you stopped in `_pricing/` and drives `Advisor → Profile → Product` (product) or `Size → Estimate` (service, per feature). Research steps in when you would rather look it up than fill it in.
+
+**The six specialists:**
+
+| Agent | Analogy | Command |
+|---|---|---|
+| **Advisor** | The consultant who asks how you want to sell before talking numbers | `/reversa-pricing-advisor` |
+| **Research** | The researcher who goes to the market and comes back with a range, a source and a date | `/reversa-pricing-research` |
+| **Profile** | The accountant who records how you charge, or researches it for you | `/reversa-pricing-profile` |
+| **Size** | The engineer who measures the job from the blueprint, not brick by brick | `/reversa-pricing-size` |
+| **Estimate** | The estimator who delivers three scenarios, never a single number | `/reversa-pricing-estimate` |
+| **Product** | The planner who tells you how many customers pay the bill at each price | `/reversa-pricing-product` |
+
+---
+
 ## Recommended sequence
 
 ```
 Legacy project: /reversa → discovery and specifications
 New project:    /reversa-new → PRD and specs → /reversa-forward
 Migration:      /reversa → /reversa-migrate → /reversa-forward
+Pricing:        /reversa-pricing → advisor → profile → product | size → estimate
 
 Manual legacy pipeline:
 Scout → Archaeologist (N sessions) → Detective → Architect → Writer → Reviewer
