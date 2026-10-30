@@ -18,6 +18,7 @@
 | Planificar la migración de un legado | `/reversa-migrate` | Migration Agents |
 | Generar un mini-sitio visual de documentación | `/reversa-docs` | Documentation Agents |
 | Descubrir cómo vender y cuánto cobrar por el software o por una feature | `/reversa-pricing` | Pricing and Size Agents |
+| Diseñar, criticar, auditar o pulir una interfaz de front-end | `/impeccable` | Front-end Team (Impeccable) |
 | Elegir el agente adecuado | `/reversa-agents-help` | Guía de agentes |
 
 El equipo de Pricing entra por `/reversa-pricing`. Translators usan `/reversa-n8n`.
@@ -129,6 +130,15 @@ Un buen consultor de precios no empieza por el número. Antes pregunta cómo qui
 | **Size** | El ingeniero que mide la obra por el plano, no por el ladrillo | `/reversa-pricing-size` |
 | **Estimate** | El presupuestador que entrega tres escenarios, nunca un número solo | `/reversa-pricing-estimate` |
 | **Product** | El planificador que dice cuántos clientes pagan la cuenta en cada precio | `/reversa-pricing-product` |
+
+---
+
+## 🎨 Impeccable: el director de arte del front-end
+**Comando:** `/impeccable`
+
+Un director de arte premiado no acepta la plantilla que todos usan. Mira la pantalla que ya tienes, pregunta para quién existe y qué necesita lograr el visitante, y solo entonces decide: más audaz, más tranquila, más clara, más rápida. Trabaja con 24 comandos de diseño (`critique`, `audit`, `polish`, `bolder`, `quieter`, `animate`, `typeset`, `layout`, `harden`, entre otros) y verifica el resultado mirando la pantalla renderizada, no solo el código.
+
+> Usa Impeccable cuando la interfaz necesita diseño de verdad: sitio, landing page, dashboard, formulario, componente o pantalla nativa. Ejecuta `/impeccable init` una vez por proyecto y luego `/impeccable <comando> <objetivo>`. Es el framework [Impeccable](https://github.com/pbakaus/impeccable) creado por Paul Bakaus ([sitio](https://impeccable.style)), entregado junto con Reversa bajo la licencia Apache 2.0, con todo el crédito a su autor.
 
 ---
 

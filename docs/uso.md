@@ -38,6 +38,7 @@ That's it. Reversa takes control and coordinates the entire analysis from there.
 | Render the extracted knowledge as an HTML mini-site | `/reversa-docs` |
 | Register and fix defects with causal traceability | `/reversa-debugger`, `/reversa-debugger-fix` |
 | Decide how to sell and price the product or each feature | `/reversa-pricing` |
+| Design, critique, audit or polish a frontend interface (Impeccable) | `/impeccable` |
 
 ---
 

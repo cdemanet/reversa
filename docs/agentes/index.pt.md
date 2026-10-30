@@ -15,6 +15,7 @@ O orquestrador central (o próprio Reversa) coordena quem entra quando, em que o
 | **Code Forward Agents** | Conduzem a evolução a partir das specs: requirements, plan, to-do, audit, quality, coding. Veja [Code Forward Agents](../forward/index.md). | Marcado por padrão |
 | **Migration Agents** | Transformam as specs do legado em um plano de reconstrução em stack moderna. Veja [Migração](../migracao/index.md). | Marcado por padrão |
 | **Pricing and Size Agents** | Estimam esforço, tamanho e precificação a partir das specs. Veja [Pricing](../pricing/index.md). | Marcado por padrão |
+| **Front-end Team (Impeccable)** | Desenha, critica, audita e pole interfaces de front-end. Apache License 2.0. Veja [Front-end](../frontend/index.md). | Marcado por padrão |
 | **Documentation Team** | Renderiza o conhecimento extraído como mini-site HTML autocontido. Veja [Time de Documentação](../documentation/index.md). | Marcado por padrão |
 | **Bug Agents** | Rastreia, debate e corrige defeitos com rastreabilidade causal até as specs. Veja [Bug Agents](../bugs/index.md). | Sempre instalado |
 | **Code Quality Agents** | Melhoram o código existente sem mudar o comportamento: refatoram, modularizam, desacoplam, otimizam, simplificam, padronizam, removem código morto. Veja [Code Quality Agents](../refactor/index.md). | Marcado por padrão |

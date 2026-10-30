@@ -18,15 +18,16 @@ Toda skill é **user-invoked** ou **model-invoked** — não há terceiro estado
 > *O modelo teria motivo para alcançar esta skill sozinho, a partir de uma frase em linguagem natural,
 > sem o usuário digitar o comando?*
 
-No Reversa a resposta é **sim apenas para os 12 pontos de entrada de fluxo**: os 11 orquestradores
-(`role: orchestrator`) mais `reversa-agents-help`. Todos os agentes de fase — Scout, Architect,
+No Reversa a resposta é **sim apenas para os 13 pontos de entrada de fluxo**: os 11 orquestradores
+(`role: orchestrator`), `reversa-agents-help` e `impeccable` (porta do time de Front-end, skill upstream
+mantida verbatim). Todos os agentes de fase — Scout, Architect,
 Reviewer, os `pricing-*`, os `debugger-*`, os `docs-*`, os especialistas de refactor e os
 renderizadores — são alcançados pelo **orquestrador lendo o `SKILL.md`**, nunca pelo modelo adivinhando.
 Logo, são user-invoked.
 
-**As 12 model-invoked:** `reversa`, `reversa-new`, `reversa-brainstorm`, `reversa-forward`, `reversa-forward-autonomous`,
+**As 13 model-invoked:** `reversa`, `reversa-new`, `reversa-brainstorm`, `reversa-forward`, `reversa-forward-autonomous`,
 `reversa-pricing`, `reversa-migrate`, `reversa-autonomous`, `reversa-refactor`, `reversa-debugger`,
-`reversa-docs`, `reversa-agents-help`.
+`reversa-docs`, `reversa-agents-help`, `impeccable`.
 
 ## As duas marcas, em lockstep
 

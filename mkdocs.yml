@@ -105,6 +105,7 @@ plugins:
             The Forward agents: Os agentes do Forward
             Migration Agents: Agentes de Migração
             Pricing and Size Agents: Pricing and Size Agents
+            Front-end Team (Impeccable): Time de Front-end (Impeccable)
             Translators N8N->Specs->Python: Tradutores N8N->Specs->Python
             Documentation Team: Time de Documentação
             The 4 visual agents: Os 4 agentes visuais
@@ -166,6 +167,7 @@ plugins:
             The Forward agents: Los agentes del Forward
             Migration Agents: Agentes de Migración
             Pricing and Size Agents: Pricing and Size Agents
+            Front-end Team (Impeccable): Equipo de Front-end (Impeccable)
             Translators N8N->Specs->Python: Traductores N8N->Specs->Python
             Documentation Team: Equipo de Documentación
             The 4 visual agents: Los 4 agentes visuales
@@ -234,6 +236,8 @@ nav:
       - Brief schema: migracao/brief.md
     - Pricing and Size Agents:
       - Overview: pricing/index.md
+    - Front-end Team (Impeccable):
+      - Overview: frontend/index.md
     - Documentation Team:
       - Overview: documentation/index.md
       - The 4 visual agents: documentation/agentes.md

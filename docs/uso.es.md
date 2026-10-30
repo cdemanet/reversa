@@ -38,6 +38,7 @@ Eso es todo. Reversa toma el control y coordina todo el análisis desde ahí.
 | Renderizar el conocimiento extraído como mini-sitio HTML | `/reversa-docs` |
 | Registrar y corregir defectos con trazabilidad causal | `/reversa-debugger`, `/reversa-debugger-fix` |
 | Decidir cómo vender y poner precio al producto o a cada feature | `/reversa-pricing` |
+| Diseñar, criticar, auditar o pulir una interfaz de front-end (Impeccable) | `/impeccable` |
 
 ---
 

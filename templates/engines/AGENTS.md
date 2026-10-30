@@ -11,6 +11,7 @@ Use o fluxo adequado no chat:
 - `reversa-forward` — implementar ou evoluir código a partir das specs
 - `reversa-migrate` — planejar a migração de um sistema legado
 - `reversa-docs` — gerar o mini-site visual da documentação
+- `impeccable` — design de front-end: criticar, auditar e polir interfaces (Impeccable, Apache 2.0)
 - `reversa-agents-help` — consultar o catálogo completo de agentes
 
 ## Comportamento ao ativar

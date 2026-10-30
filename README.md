@@ -109,6 +109,7 @@ For other workflows, use the matching entry command:
 | Render the extracted knowledge as an HTML mini-site | `/reversa-docs` |
 | Track and fix defects with causal traceability | `/reversa-debugger`, `/reversa-debugger-fix` |
 | Price your software or a feature: sale model, billing profile, size and three scenarios | `/reversa-pricing` |
+| Design, critique, audit or polish a frontend interface (Impeccable) | `/impeccable` |
 
 Each orchestrator pauses between agents and asks for `CONTINUAR` before advancing, so you stay in control of every step.
 
@@ -152,7 +153,7 @@ For a **greenfield** project (no legacy to extract), start with `/reversa-new` i
 
 ## Agents
 
-Reversa organizes its agents in **ten specialized Teams**. The Discovery Team (Reversa Agents Core) and the Bug Agents are always installed; seven Teams are pre-checked in the installer and Translators are opt-in.
+Reversa organizes its agents in **eleven specialized Teams**. The Discovery Team (Reversa Agents Core) and the Bug Agents are always installed; seven Teams are pre-checked in the installer and Translators are opt-in.
 
 | Team | Purpose | Entry command |
 |------|---------|---------------|
@@ -162,6 +163,7 @@ Reversa organizes its agents in **ten specialized Teams**. The Discovery Team (R
 | **Code Forward Agents** | Evolve the system from specs to running code, one feature at a time | `/reversa-forward` |
 | **Migration Agents** | Turn legacy specs into a rebuild plan for a modern stack | `/reversa-migrate` |
 | **Pricing and Size Agents** | Decide how to sell, then price the product or each feature on top of the specs | `/reversa-pricing` |
+| **Front-end Team** (Impeccable) | Design, critique, audit and polish frontend interfaces with 24 design commands | `/impeccable` |
 | **Documentation Team** | Render the extracted knowledge as a self-contained HTML mini-site | `/reversa-docs` |
 | **Bug Agents** | Track, debate and fix defects with causal traceability to the specs | `/reversa-debugger` |
 | **Code Quality Agents** | Improve existing code without changing behavior: refactor, optimize, standardize, prune dead code | `/reversa-refactor` |
@@ -256,6 +258,14 @@ Use after `/reversa` when the goal is to rebuild the legacy on a modern stack. A
 ### Pricing and Size Team
 
 Seven agents led by `/reversa-pricing`: Advisor (sale model), Research (web references with sources), Profile (billing profile, with an 'I know' and a 'research for me' mode), Size and Estimate (per feature: three scenarios), Product (break-even calculator for licenses, rentals, subscriptions and app stores). Only Research touches the web.
+
+### Front-end Team (Impeccable)
+
+Reversa ships **[Impeccable](https://github.com/pbakaus/impeccable)** as its Front-end Team. Impeccable is created and maintained by **[Paul Bakaus](https://github.com/pbakaus)** and released under the [Apache License 2.0](agents/impeccable/LICENSE); all credit for the skill, its 24 commands and its design guidance goes to him. Reversa could have reverse-engineered Impeccable's documentation and rebuilt its guidance under its own name. That would be dishonest and unfair to its author, who did excellent work producing a frontend design library this good. So Reversa ships his work as it is, under his license, and gives him the recognition he deserves for it. Source code: [github.com/pbakaus/impeccable](https://github.com/pbakaus/impeccable) · Website and docs: [impeccable.style](https://impeccable.style). It is one skill with 24 design commands for websites, dashboards, product UI, components and native screens: `shape`, `critique`, `audit`, `polish`, `bolder`, `quieter`, `distill`, `harden`, `onboard`, `animate`, `colorize`, `typeset`, `layout`, `delight`, `overdrive`, `clarify`, `adapt`, `optimize`, `live`, `generate`, plus `init`, `document` and `extract` for product and design-system context.
+
+Start with `/impeccable init` once per project, then `/impeccable <command> <target>` (e.g. `/impeccable critique landing`, `/impeccable polish settings`). The first run downloads the Impeccable engine binary into `~/.impeccable/bin`; no Node runtime is required.
+
+The copy under `agents/impeccable/` is synced verbatim from the upstream release tags by `scripts/sync-impeccable.mjs`; a daily GitHub Action opens a pull request whenever Impeccable publishes a new release, so `npx reversa update` always carries the current version. Source, version and commit are recorded in `agents/impeccable/reversa-bundle.json`.
 
 ### Translators (input adapters)
 
@@ -471,3 +481,9 @@ npm install
 ## License
 
 MIT — see [LICENSE](LICENSE) for details.
+
+### Third-party components
+
+| Component | Author | License | Where |
+|-----------|--------|---------|-------|
+| [Impeccable](https://github.com/pbakaus/impeccable) | Paul Bakaus | [Apache License 2.0](agents/impeccable/LICENSE) · [NOTICE](agents/impeccable/NOTICE.md) | `agents/impeccable/` (Front-end Team) |

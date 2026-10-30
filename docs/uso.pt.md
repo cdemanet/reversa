@@ -38,6 +38,7 @@ O `/reversa` é o ponto de entrada para analisar um sistema existente, mas não 
 | Renderizar o conhecimento extraído como mini-site HTML | `/reversa-docs` |
 | Registrar e corrigir defeitos com rastreabilidade causal | `/reversa-debugger`, `/reversa-debugger-fix` |
 | Decidir como vender e precificar o produto ou cada feature | `/reversa-pricing` |
+| Desenhar, criticar, auditar ou polir uma interface de front-end (Impeccable) | `/impeccable` |
 
 ---
 

@@ -20,6 +20,7 @@ It explains each agent with a real-world analogy. But since you're already here,
 | Plan a legacy migration | `/reversa-migrate` | Migration Agents |
 | Generate a visual documentation mini-site | `/reversa-docs` | Documentation Agents |
 | Find out how to sell and how much to charge for the software or a feature | `/reversa-pricing` | Pricing and Size Agents |
+| Design, critique, audit or polish a frontend interface | `/impeccable` | Front-end Team (Impeccable) |
 | Choose the right agent | `/reversa-agents-help` | Agent guide |
 
 The Pricing team enters through `/reversa-pricing`. Translators use `/reversa-n8n`.
@@ -131,6 +132,15 @@ A good pricing consultant doesn't start with a number. First they ask how you wa
 | **Size** | The engineer who measures the job from the blueprint, not brick by brick | `/reversa-pricing-size` |
 | **Estimate** | The estimator who delivers three scenarios, never a single number | `/reversa-pricing-estimate` |
 | **Product** | The planner who tells you how many customers pay the bill at each price | `/reversa-pricing-product` |
+
+---
+
+## 🎨 Impeccable: the frontend art director
+**Command:** `/impeccable`
+
+An award-winning art director does not accept the template everyone else uses. They look at the screen you already have, ask who it exists for and what the visitor needs to get done, and only then decide: bolder, quieter, clearer, faster. They work with 24 design commands (`critique`, `audit`, `polish`, `bolder`, `quieter`, `animate`, `typeset`, `layout`, `harden`, among others) and verify the result by looking at the rendered screen, not just the code.
+
+> Use Impeccable when the interface needs real design: website, landing page, dashboard, form, component or native screen. Run `/impeccable init` once per project, then `/impeccable <command> <target>`. It is the [Impeccable](https://github.com/pbakaus/impeccable) framework created by Paul Bakaus ([website](https://impeccable.style)), shipped with Reversa under the Apache License 2.0, with full credit to its author.
 
 ---
 

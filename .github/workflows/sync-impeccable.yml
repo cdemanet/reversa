@@ -1,0 +1,92 @@
+name: Sync Impeccable
+
+# Vínculo com o upstream pbakaus/impeccable (Apache License 2.0).
+# Todo dia verifica se há release nova da skill (tag skill-vX.Y.Z). Se houver,
+# atualiza a cópia vendorizada em agents/impeccable/, incrementa o patch do
+# Reversa e abre um PR. Depois do merge, basta publicar no npm como de costume:
+# o `npx reversa update` do usuário já leva o Impeccable novo.
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag do upstream (ex.: skill-v4.7.0). Vazio = última release.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-impeccable
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Sincronizar agents/impeccable com o upstream
+        run: |
+          if [ -n "${{ github.event.inputs.tag }}" ]; then
+            node scripts/sync-impeccable.mjs --tag "${{ github.event.inputs.tag }}"
+          else
+            node scripts/sync-impeccable.mjs
+          fi
+
+      - name: Detectar mudança
+        id: diff
+        run: |
+          if git diff --cached --quiet -- agents/impeccable; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "impeccable_version=$(node -p "require('./agents/impeccable/reversa-bundle.json').version")" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump de patch do Reversa
+        if: steps.diff.outputs.changed == 'true'
+        id: bump
+        run: |
+          npm version patch --no-git-tag-version
+          echo "reversa_version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Verificar eixo de invocação
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          python3 scripts/verify-invocation.py
+          node scripts/test-installer-transport.mjs
+
+      - name: Abrir PR
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-impeccable
+          delete-branch: true
+          commit-message: |
+            chore(impeccable): sync Front-end Team to Impeccable v${{ steps.diff.outputs.impeccable_version }} (v${{ steps.bump.outputs.reversa_version }})
+
+            Cópia vendorizada de agents/impeccable/ atualizada a partir de
+            pbakaus/impeccable (Apache License 2.0) por scripts/sync-impeccable.mjs.
+          title: 'chore(impeccable): sync to Impeccable v${{ steps.diff.outputs.impeccable_version }} (v${{ steps.bump.outputs.reversa_version }})'
+          body: |
+            Release nova do [Impeccable](https://github.com/pbakaus/impeccable) detectada.
+
+            - Impeccable: **v${{ steps.diff.outputs.impeccable_version }}**
+            - Reversa: **v${{ steps.bump.outputs.reversa_version }}** (bump de patch)
+            - Licença: Apache License 2.0 (`agents/impeccable/LICENSE`, `agents/impeccable/NOTICE.md`)
+
+            Gerado por `.github/workflows/sync-impeccable.yml`. Após o merge, publique no npm para que `npx reversa update` entregue a versão nova.
+          labels: dependencies, impeccable

@@ -15,6 +15,7 @@ The central orchestrator (Reversa itself) coordinates who enters when, in what o
 | **Code Forward Agents** | Drive forward delivery from the specs: requirements, plan, to-do, audit, quality, coding. See [Code Forward Agents](../forward/index.md). | Pre-checked |
 | **Migration Agents** | Turn legacy specs into a rebuild plan for a modern stack. See [Migration](../migracao/index.md). | Pre-checked |
 | **Pricing and Size Agents** | Estimate effort, size and pricing on top of the specs. See [Pricing](../pricing/index.md). | Pre-checked |
+| **Front-end Team (Impeccable)** | Design, critique, audit and polish frontend interfaces. Apache License 2.0. See [Front-end](../frontend/index.md). | Pre-checked |
 | **Documentation Team** | Render the extracted knowledge as a self-contained HTML mini-site. See [Documentation Team](../documentation/index.md). | Pre-checked |
 | **Bug Agents** | Track, debate and fix defects with causal traceability to the specs. See [Bug Agents](../bugs/index.md). | Always installed |
 | **Code Quality Agents** | Improve existing code without changing behavior: refactor, modularize, decouple, optimize, simplify, standardize, prune dead code. See [Code Quality Agents](../refactor/index.md). | Pre-checked |

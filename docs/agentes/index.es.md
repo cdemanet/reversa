@@ -13,6 +13,7 @@ Reversa coordina **9 Teams especializados** de agentes. Cada agente hace una cos
 | **Code Forward Agents** | Llevan adelante la entrega desde las specs: requirements, plan, to-do, audit, quality, coding. Ver [Code Forward Agents](../forward/index.md). | Marcado por defecto |
 | **Migration Agents** | Convierten las specs del legado en un plan de reconstrucción en un stack moderno. Ver [Migración](../migracao/index.md). | Marcado por defecto |
 | **Pricing and Size Agents** | Estiman esfuerzo, tamaño y precio sobre las specs. Ver [Pricing](../pricing/index.md). | Marcado por defecto |
+| **Front-end Team (Impeccable)** | Diseña, critica, audita y pule interfaces de front-end. Apache License 2.0. Ver [Front-end](../frontend/index.md). | Marcado por defecto |
 | **Documentation Team** | Renderiza el conocimiento extraído como mini-sitio HTML autocontenido. Ver [Equipo de Documentación](../documentation/index.md). | Marcado por defecto |
 | **Bug Agents** | Rastrea, debate y corrige defectos con trazabilidad causal hasta las specs. Ver [Bug Agents](../bugs/index.md). | Siempre instalado |
 | **Code Quality Agents** | Mejoran el código existente sin cambiar el comportamiento: refactorizan, modularizan, desacoplan, optimizan, simplifican, estandarizan, eliminan código muerto. Ver [Code Quality Agents](../refactor/index.md). | Marcado por defecto |
