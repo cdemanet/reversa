@@ -11,6 +11,7 @@ Use the right flow in chat:
 - `/reversa-forward` — implement or evolve code from the specs
 - `/reversa-migrate` — plan the migration of a legacy system
 - `/reversa-docs` — generate the visual documentation mini-site
+- `/impeccable` — front-end design: critique, audit and polish interfaces (Impeccable, Apache 2.0)
 - `/reversa-agents-help` — consult the full agents catalog
 
 ## Activation behavior

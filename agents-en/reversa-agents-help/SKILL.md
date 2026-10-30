@@ -31,6 +31,7 @@ Reversa is a team of specialists. Each agent does one thing — and does it well
 | Plan the migration of a legacy | `/reversa-migrate` | Migration Agents |
 | Generate a visual mini-site from documentation | `/reversa-docs` | Documentation Agents |
 | Discover how to sell and how much to charge for the software or for a feature | `/reversa-pricing` | Pricing and Size Agents |
+| Design, critique, audit or polish a front-end interface | `/impeccable` | Front-end Team (Impeccable) |
 | Understand which agent to use | `/reversa-agents-help` | Agent guide |
 
 The Pricing team enters through `/reversa-pricing`. Translators use `/reversa-n8n`.
@@ -184,6 +185,15 @@ A good price consultant does not start with the number. First he asks how you wa
 
 ---
 
+## 🎨 Impeccable — the front-end art director
+**Command:** `/impeccable`
+
+An award-winning art director does not accept the template everyone uses. He looks at the screen you already have, asks who it exists for and what the visitor needs to be able to do, and only then decides: make it bolder, quieter, clearer, faster. He works with 24 design commands (`critique`, `audit`, `polish`, `bolder`, `quieter`, `animate`, `typeset`, `layout`, `harden`, among others) and checks the result by looking at the rendered screen, not just the code.
+
+> Use Impeccable when the interface needs real design: a site, a landing page, a dashboard, a form, a component or a native screen. Run `/impeccable init` once per project and then `/impeccable <command> <target>`. It is the [Impeccable](https://github.com/pbakaus/impeccable) framework created by Paul Bakaus ([site](https://impeccable.style)), shipped with Reversa under the Apache 2.0 license, with all credit to the author.
+
+---
+
 ## Recommended sequence
 
 ```
@@ -191,6 +201,7 @@ Legacy project: /reversa → discovery and specifications
 New project:   /reversa-new → PRD and specs → /reversa-forward
 Migration:     /reversa → /reversa-migrate → /reversa-forward
 Pricing:       /reversa-pricing → advisor → profile → product | size → estimate
+Front-end:     /impeccable init → /impeccable <command> <target>
 
 Manual legacy pipeline:
 Scout → Archaeologist (N sessions) → Detective → Architect → Writer → Reviewer

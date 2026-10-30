@@ -96,13 +96,13 @@ Navigable slide deck (right/left arrows + fullscreen) with 6 to 10 slides, adapt
 | # | Slide | Source |
 |---|---|---|
 | 1 | Cover | project name + seal (from Publisher if already ran, otherwise placeholder) |
-| 2 | Purpose | `soul.json.sections["Propósito"]` or similar |
-| 3 | Central entities | `soul.json.sections["Entidades centrais"]` |
+| 2 | Purpose | `soul.json.sections["1. Purpose"]` or similar |
+| 3 | Central entities | `soul.json.sections["2. Central entities"]` |
 | 4 | Architecture | preview of `arquitetura.html` ("see full" link) |
 | 5 | Modules | preview of `modulos.html` |
 | 6 | Metrics | preview of `metricas.html` (3 main KPIs) |
 | 7 | Timeline | preview of `timeline.html` (last 5 events) |
-| 8 | Founding decisions | `soul.json.sections["Decisões fundadoras"]` |
+| 8 | Founding decisions | `soul.json.sections["3. Founding decisions"]` |
 | 9 | Featured feature | most recent or widest spec |
 | 10 | Closing | links to next steps (CTA) |
 
